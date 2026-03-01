@@ -15,7 +15,7 @@ This workspace studies roughness scaling in overland flow over heterogeneous (ve
 ```
 roughness-scale/
 ├── .github/copilot-instructions.md   ← THIS FILE
-├── blob_code/                         ← Python modules (simulation I/O, plotting)
+├── swof_code/                         ← Python modules (simulation I/O, plotting)
 │   ├── source_functions_1p3.py        ← core simulation helpers
 │   ├── plot_SWOF.py                   ← legacy plotting + `names` dict
 │   ├── read_SWOF.py, write_SWOF.py
@@ -52,7 +52,7 @@ roughness-scale/
 
 ### Imports & sys.path
 
-Both notebooks set `sys.path` to include `blob_code/` and use:
+Both notebooks set `sys.path` to include `swof_code/` and use:
 ```python
 from plot_SWOF import *        # brings `names` dict into scope
 from source_functions_1p3 import *
