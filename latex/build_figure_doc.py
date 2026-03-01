@@ -104,8 +104,8 @@ def generate_tex(batch: str, entries: list[dict]) -> str:
     tex = rf"""\documentclass[11pt]{{article}}
 \usepackage[margin=1in]{{geometry}}
 \usepackage{{graphicx}}
-\usepackage{{hyperref}}
 \usepackage[font=small,labelfont=bf]{{caption}}
+\usepackage[hidelinks]{{hyperref}}
 
 \title{{Figure Compilation — {title_escaped}}}
 \author{{Auto-generated from figure\_registry\_concise.txt}}

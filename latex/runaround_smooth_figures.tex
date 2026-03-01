@@ -1,8 +1,8 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
-\usepackage{hyperref}
 \usepackage[font=small,labelfont=bf]{caption}
+\usepackage[hidelinks]{hyperref}
 
 \title{Figure Compilation — Runaround Smooth}
 \author{Auto-generated from figure\_registry\_concise.txt}
@@ -16,7 +16,7 @@
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{../figures/runaround_smooth/fig4_obs_vs_pred_re_6panel.png}
-  \caption{2×3 observed vs predicted r\_e for six composite-roughness expressions, coloured by sigma. Felkel and Horton-Einstein track the 1:1 line best; Cox is insensitive.}
+  \caption{Observed vs predicted r\_e for six composite-roughness expressions, coloured by sigma. Lotter tracks the 1:1 line best (R²=0.98); Pavlovskii is weakest (R²=0.85).}
   \label{fig:fig4}
 \end{figure}
 
@@ -24,8 +24,16 @@
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{../figures/runaround_smooth/fig5_pred_vs_obs_CF.png}
-  \caption{2×2 predicted vs observed n\_e/<n> for four CF methods, coloured by sigma. Leading-term CF captures most variance (R²$\approx$0.67); Lotter predicts a constant and cannot distinguish cases.}
+  \caption{Predicted vs observed n\_e/<n> for four CF methods, coloured by sigma. Felkel performs best (R²=0.68); 2nd-order $T_0$ (CF) is weakest (R²=0.15).}
   \label{fig:fig5}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/runaround_smooth/SI1_CF_errors_3panel.png}
+  \caption{CF diagnostic coloured by tr: relative U and h errors vs CF values, plus h/U identity comparison.}
+  \label{fig:si1}
 \end{figure}
 
 \end{document}

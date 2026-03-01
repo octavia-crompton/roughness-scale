@@ -1,26 +1,31 @@
-Figure registry  •  created 2026-02-28 20:18
+Figure registry  •  created 2026-03-01 07:29
 Source notebook  :  notebooks/roughness_scale-analysis.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
 ### fig4 ###
 File     : fig4_obs_vs_pred_re_6panel.png
-Updated  : 2026-02-28 14:45
+Updated  : 2026-03-01 07:29
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 Observed vs predicted r_e for six equivalent-roughness expressions (Horton-Einstein, Pavlovskii, Lotter, Cox, Shear-force, Felkel).
 Markers coloured by sigma (highest mean |r| with residual across expressions).
 
-Interpretation:
-  - Felkel (n_exp8) and Horton-Einstein (n_exp1) track the 1:1 line best.
-  - Cox/arithmetic (n_exp4) is insensitive — predicts near <n> for all cases.
-  - Residual structure is most associated with sigma.
+Per-expression performance:
+  - Horton–Einstein: R²=0.88, RMSE=0.036
+  - Pavlovskii: R²=0.85, RMSE=0.042
+  - Lotter: R²=0.98, RMSE=0.009
+  - Cox (arithmetic): R²=0.91, RMSE=0.029
+  - Shear-force: R²=0.91, RMSE=0.031
+  - Felkel: R²=0.96, RMSE=0.010
+
+Residual structure is most associated with sigma.
 ### end fig4 ###
 
 ### fig5 ###
 File     : fig5_pred_vs_obs_CF.png
-Updated  : 2026-02-28 20:10
+Updated  : 2026-03-01 07:29
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -39,7 +44,7 @@ Residuals correlate most with sigma; dominant errors occur at extreme sigma valu
 
 ### SI1 ###
 File     : SI1_CF_errors_3panel.png
-Updated  : 2026-02-28 20:18
+Updated  : 2026-03-01 07:29
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
