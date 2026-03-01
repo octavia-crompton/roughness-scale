@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.eggs/
+dist/
+build/
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Environments
+.env
+.venv/
+
+# Data files (large; keep paths but not blobs)
+*.pkl
+*.h5
+*.hdf5
+
+# Figures — track registries + PNGs, ignore scratch
+figures/*/scratch/
+
+# IDE
+.vscode/
+.idea/

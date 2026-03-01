@@ -1,0 +1,13 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Keep .tex and .pdf
+!*.tex
+!*.pdf

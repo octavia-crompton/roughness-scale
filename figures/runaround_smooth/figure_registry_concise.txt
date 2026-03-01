@@ -1,0 +1,12 @@
+Figure Registry (concise)  •  2026-02-28 20:18
+Source: notebooks/roughness_scale-analysis.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
+========================================================================
+
+Fig 4 — fig4_obs_vs_pred_re_6panel.png
+  
+
+Fig 5 — fig5_pred_vs_obs_CF.png
+  
+
+SI1 — SI1_CF_errors_3panel.png
+  Three-panel CF diagnostic coloured by tr: relative U and h errors vs CF values, plus h/U identity comparison.

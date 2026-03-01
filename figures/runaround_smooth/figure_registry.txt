@@ -1,0 +1,49 @@
+Figure registry  •  created 2026-02-28 20:18
+Source notebook  :  notebooks/roughness_scale-analysis.ipynb
+Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
+────────────────────────────────────────────────────────────────────────
+
+### fig4 ###
+File     : fig4_obs_vs_pred_re_6panel.png
+Updated  : 2026-02-28 14:45
+Notebook : notebooks/roughness_scale-analysis.ipynb
+Saved in : ../figures/runaround_smooth
+────────────────────────────────────────────────────────────────────────
+Observed vs predicted r_e for six equivalent-roughness expressions (Horton-Einstein, Pavlovskii, Lotter, Cox, Shear-force, Felkel).
+Markers coloured by sigma (highest mean |r| with residual across expressions).
+
+Interpretation:
+  - Felkel (n_exp8) and Horton-Einstein (n_exp1) track the 1:1 line best.
+  - Cox/arithmetic (n_exp4) is insensitive — predicts near <n> for all cases.
+  - Residual structure is most associated with sigma.
+### end fig4 ###
+
+### fig5 ###
+File     : fig5_pred_vs_obs_CF.png
+Updated  : 2026-02-28 20:10
+Notebook : notebooks/roughness_scale-analysis.ipynb
+Saved in : ../figures/runaround_smooth
+────────────────────────────────────────────────────────────────────────
+Predicted vs observed n_e/<n> for four CF-field methods (Leading term, T0, Lotter, Felkel).
+Markers coloured by sigma (highest |r| with leading-term residual).
+RMSE/R² annotated per panel.
+
+Per-method performance:
+  - Leading term (CF): R²=0.67, RMSE=0.108
+  - 2nd-order $T_0$ (CF): R²=0.15, RMSE=0.208
+  - Lotter (CF): R² undefined, RMSE=0.225
+  - Felkel: R²=0.68, RMSE=0.062
+
+Residuals correlate most with sigma; dominant errors occur at extreme sigma values.
+### end fig5 ###
+
+### SI1 ###
+File     : SI1_CF_errors_3panel.png
+Updated  : 2026-02-28 20:18
+Notebook : notebooks/roughness_scale-analysis.ipynb
+Saved in : ../figures/runaround_smooth
+────────────────────────────────────────────────────────────────────────
+Three-panel correction-factor diagnostic.
+Panels 1 & 2: relative U and h errors vs CF values, coloured by tr.
+Panel 3: h/U identity comparison (correction factor vs integrate).
+### end SI1 ###
