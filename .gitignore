@@ -28,3 +28,9 @@ figures/*/scratch/
 # IDE
 .vscode/
 .idea/
+
+# Overleaf git clones (credentials / private)
+overleaf
+overleaf-working
+
+# Internal notes tracked locally via pre-push hook — see .git/hooks/pre-push

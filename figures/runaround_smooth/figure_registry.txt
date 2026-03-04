@@ -1,11 +1,20 @@
-Figure registry  •  created 2026-03-01 07:29
+Figure registry  •  created 2026-03-03 08:57
 Source notebook  :  notebooks/roughness_scale-analysis.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
+### fig3 ###
+File     : fig3_effect_ratio_vs_sigma_grid.png
+Updated  : 2026-03-03 08:57
+Notebook : notebooks/roughness_scale-analysis.ipynb
+Saved in : ../figures/runaround_smooth
+────────────────────────────────────────────────────────────────────────
+$n_e/\langle n \rangle$ vs $\sigma$ for all simulations at $f_V \approx 0.6$, organised in a grid of panels by rainfall intensity ($p$, rows) and storm duration ($t_r$, columns). Points are coloured and shaped by vegetation arrangement type (or anisotropy when only blob patterns are present).
+### end fig3 ###
+
 ### fig4 ###
 File     : fig4_obs_vs_pred_re_6panel.png
-Updated  : 2026-03-01 07:29
+Updated  : 2026-03-01 21:15
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -25,7 +34,7 @@ Residual structure is most associated with sigma.
 
 ### fig5 ###
 File     : fig5_pred_vs_obs_CF.png
-Updated  : 2026-03-01 07:29
+Updated  : 2026-03-01 21:15
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -44,7 +53,7 @@ Residuals correlate most with sigma; dominant errors occur at extreme sigma valu
 
 ### SI1 ###
 File     : SI1_CF_errors_3panel.png
-Updated  : 2026-03-01 07:29
+Updated  : 2026-03-01 21:15
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────

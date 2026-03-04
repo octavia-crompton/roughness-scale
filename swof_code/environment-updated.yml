@@ -1,0 +1,31 @@
+name: swof-updated
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - statsmodels
+  - scikit-learn
+  - scikit-image
+  - opencv
+  - shapely
+  - openpyxl
+  - pyyaml
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - ipywidgets
+  - tqdm
+  - multiprocess
+  - pip
+  - pip:
+      - cmocean
+      - pydoe2
+      - smt
+      - altair
+      - vega_datasets

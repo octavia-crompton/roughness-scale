@@ -1,6 +1,6 @@
 # Roughness-Scale Project — AI Agent Instructions
 
-> **Last updated:** 2026-02-28
+> **Last updated:** 2026-03-02
 > Read this file at the start of every new chat session.
 > Update this file when new conventions, preferences, or project structure changes are established in chat.
 
@@ -15,6 +15,7 @@ This workspace studies roughness scaling in overland flow over heterogeneous (ve
 ```
 roughness-scale/
 ├── .github/copilot-instructions.md   ← THIS FILE
+├── overleaf/                          ← git clone of https://git.overleaf.com/663fbe37ea3d10144699322a (push/pull to sync with Overleaf)
 ├── swof_code/                         ← Python modules (simulation I/O, plotting)
 │   ├── source_functions_1p3.py        ← core simulation helpers
 │   ├── plot_SWOF.py                   ← legacy plotting + `names` dict
@@ -23,9 +24,13 @@ roughness-scale/
 │   └── ...
 ├── src/
 │   ├── __init__.py
-│   └── labels.py                      ← SHARED labels, cmaps, font sizes (see §3)
+│   ├── labels.py                      ← SHARED labels, cmaps, font sizes (see §3)
+│   └── figure_registry.py             ← SHARED figure registry helpers (see §3b)
 ├── notebooks/
-│   ├── roughness_scale-analysis.ipynb ← analysis & figures (main)
+│   ├── roughness_scale-analysis.ipynb ← original combined notebook (source for split; kept as reference)
+│   ├── roughness_scale-pattern.ipynb  ← spatial pattern & storm characteristics (figs 1-3)
+│   ├── roughness_scale-cf.ipynb       ← correction factor & composite channel equations (Lotter, Cox, etc.)
+│   ├── roughness_scale-decomp.ipynb   ← spatial decomposition & prediction methods (T0/T1/T2, OLS, ML)
 │   ├── roughness_scale-compute.ipynb  ← data processing & derived columns
 │   └── archive/                       ← old/dated notebooks
 ├── figures/
@@ -50,9 +55,18 @@ roughness-scale/
 
 ## 2. Notebook Conventions
 
+### Active analysis notebooks
+
+| Notebook | Purpose |
+|---|---|
+| `roughness_scale-pattern.ipynb` | Scatter/grid plots of σ, fV, anisotropy + storm characteristics vs $n_e/\langle n \rangle$ |
+| `roughness_scale-cf.ipynb` | Correction factor, equivalent-roughness formulas (Lotter, Cox, Horton–Einstein, Felkel), and composite-channel comparisons |
+| `roughness_scale-decomp.ipynb` | T0/T1/T2 variance decomposition of $n_e/\langle n \rangle$, OLS/ML regression models, hybrid predictions, pattern–forcing interactions |
+| `roughness_scale-compute.ipynb` | Load raw SWOF output, compute `effect_ratio`, write `summary_slim.pkl` |
+
 ### Imports & sys.path
 
-Both notebooks set `sys.path` to include `swof_code/` and use:
+All analysis notebooks set `sys.path` to include `swof_code/` and use:
 ```python
 from plot_SWOF import *        # brings `names` dict into scope
 from source_functions_1p3 import *
@@ -74,6 +88,20 @@ def format_name(fld, updates=updates):
     return _format_name_raw(fld, names, updates=updates)
 ```
 
+For the figure registry (see §4):
+```python
+import sys as _sys
+_sys.path.insert(0, "/Users/octaviacrompton/Projects/roughness-scale/src")
+import figure_registry as _fig_reg
+
+# Re-expose convenience names
+_fig_dirs              = _fig_reg._fig_dirs
+update_figure_registry = _fig_reg.update_figure_registry
+
+# Call once after out_dir is set — use the actual notebook filename:
+_fig_reg.configure(out_dir, notebook_name='roughness_scale-pattern.ipynb')  # or -cf or -decomp
+```
+
 ### Python environment
 
 - Python: `/opt/homebrew/bin/python3` (base conda)
@@ -87,7 +115,7 @@ def format_name(fld, updates=updates):
 
 ### USE_HYDRO toggle
 
-Both notebooks support a `USE_HYDRO = False` flag. When `True`, `effect_ratio` and `effect` are overwritten with their hydrograph-based equivalents (`effect_ratio_hydro`, `effect_hydro`).
+All three analysis notebooks support a `USE_HYDRO = False` flag. When `True`, `effect_ratio` and `effect` are overwritten with their hydrograph-based equivalents (`effect_ratio_hydro`, `effect_hydro`).
 
 ---
 
@@ -131,6 +159,22 @@ Every simulation parameter has a fixed colourmap. Always use `VAR_CMAPS.get(var,
 | `alpha_v` | Oranges |
 | `alpha_b` | RdPu |
 | `So` | copper |
+
+---
+
+## 3b. Shared Code — `src/figure_registry.py`
+
+All figure-registry logic lives in `src/figure_registry.py`. **Do not duplicate these functions in notebook cells.**
+
+### Exports
+
+| Name | Purpose |
+|---|---|
+| `configure(out_dir, notebook_name)` | Initialise registry for a session — call once after `out_dir` is set |
+| `_fig_dirs()` | Returns `(fig_dir, scratch_dir, registry_path)` |
+| `update_figure_registry(fig_id, filename, description, concise)` | Write/update a figure entry in both registries |
+| `_parse_registry(path)` | Parse existing registry → `{fig_id: entry}` |
+| `_rewrite_registry(entries, path)` | Re-sort and write both registry files |
 
 ---
 
@@ -206,9 +250,10 @@ Fig 4 — fig4_obs_vs_pred_re_6panel.png
 - Use `VEG_COLORS` / `VEG_LABELS` for veg_type categories
 - RMSE/R² annotations: `ax.text()` in bottom-right, not in title
 - Legend style: prefer `Line2D` circle markers over `Patch` rectangles for scatter legends
-- Truncate colormaps (e.g., 0.2–0.95) to avoid too-light colours near white
+- Truncate colormaps with darker lower bound (e.g., 0.4–0.95) to avoid too-light colours near white
 - Add small y-jitter (`rng.normal(0, 0.005)`) when observed values cluster on discrete levels
 - Use `renameit()` for axis labels whenever possible
+- Multi-column grid plots: share y-axis between left and center columns (columns 0 and 1), keep right column independent
 
 ---
 
@@ -264,6 +309,8 @@ brew install --cask mactex-no-gui
 ## 6. Notebook File Management
 
 - **Active notebooks** live in `notebooks/`.
+- **Primary notebooks** for analysis are `roughness_scale-pattern.ipynb`, `roughness_scale-cf.ipynb`, and `roughness_scale-decomp.ipynb`.
+- `roughness_scale-analysis.ipynb` is the original combined notebook kept as reference — do not make new changes to it.
 - **Archived notebooks** go to `notebooks/archive/` with a date suffix if not already dated.
 - Do not create new notebooks without being asked — modify existing ones.
 

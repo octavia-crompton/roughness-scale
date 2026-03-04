@@ -50,6 +50,8 @@ rename = {
     # ===== roughness / effect metrics =====
     "effect"             : r"$r_{\mathrm{avg}} - r_e$",
     "effect_ratio"       : r"$n_e/\langle n \rangle$",
+    "effect_ratio_U"     : r"$n_e^U/\langle n \rangle$",
+    "effect_ratio_Q"     : r"$n_e^Q/\langle n \rangle$",
     "effect_ratio_hydro" : r"$n_e^{\mathrm{hydro}}/\langle n \rangle$",
     "effect_ratio_geom"  : r"$r_e/r_{\mathrm{geom}}$",
     "r_equiv"            : r"$r_e$",
