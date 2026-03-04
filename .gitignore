@@ -34,3 +34,4 @@ overleaf
 overleaf-working
 
 # Internal notes tracked locally via pre-push hook — see .git/hooks/pre-push
+INTERNAL_README.md
