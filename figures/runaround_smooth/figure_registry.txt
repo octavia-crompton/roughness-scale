@@ -1,11 +1,11 @@
-Figure registry  •  created 2026-03-03 08:57
-Source notebook  :  notebooks/roughness_scale-analysis.ipynb
+Figure registry  •  created 2026-03-07 08:32
+Source notebook  :  notebooks/roughness_scale-cf.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
 ### fig3 ###
 File     : fig3_effect_ratio_vs_sigma_grid.png
-Updated  : 2026-03-03 08:57
+Updated  : 2026-03-03 17:23
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -14,8 +14,8 @@ $n_e/\langle n \rangle$ vs $\sigma$ for all simulations at $f_V \approx 0.6$, or
 
 ### fig4 ###
 File     : fig4_obs_vs_pred_re_6panel.png
-Updated  : 2026-03-01 21:15
-Notebook : notebooks/roughness_scale-analysis.ipynb
+Updated  : 2026-03-07 08:32
+Notebook : notebooks/roughness_scale-cf.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 Observed vs predicted r_e for six equivalent-roughness expressions (Horton-Einstein, Pavlovskii, Lotter, Cox, Shear-force, Felkel).
@@ -34,8 +34,8 @@ Residual structure is most associated with sigma.
 
 ### fig5 ###
 File     : fig5_pred_vs_obs_CF.png
-Updated  : 2026-03-01 21:15
-Notebook : notebooks/roughness_scale-analysis.ipynb
+Updated  : 2026-03-07 08:32
+Notebook : notebooks/roughness_scale-cf.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 Predicted vs observed n_e/<n> for four CF-field methods (Leading term, T0, Lotter, Felkel).
@@ -53,8 +53,8 @@ Residuals correlate most with sigma; dominant errors occur at extreme sigma valu
 
 ### SI1 ###
 File     : SI1_CF_errors_3panel.png
-Updated  : 2026-03-01 21:15
-Notebook : notebooks/roughness_scale-analysis.ipynb
+Updated  : 2026-03-07 08:32
+Notebook : notebooks/roughness_scale-cf.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 Three-panel correction-factor diagnostic.
