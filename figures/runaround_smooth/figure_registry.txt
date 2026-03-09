@@ -1,11 +1,11 @@
-Figure registry  •  created 2026-03-07 08:32
-Source notebook  :  notebooks/roughness_scale-cf.ipynb
+Figure registry  •  created 2026-03-09 05:27
+Source notebook  :  notebooks/roughness_scale-analysis.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
 ### fig3 ###
 File     : fig3_effect_ratio_vs_sigma_grid.png
-Updated  : 2026-03-03 17:23
+Updated  : 2026-03-09 05:27
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────

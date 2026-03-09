@@ -246,10 +246,14 @@ def write_veg_blob_aniso(p0, sim_dir):
     np.random.seed(p0.seed)
 
     veg = np.random.uniform(0, 1, (p0.Nxcell, p0.Nycell)) 
+    r = abs(p0.aniso) if p0.aniso != 0 else 1
     if p0.aniso > 0:
-        gauss = gaussian_filter(veg, sigma=(p0.sigma, p0.sigma/p0.aniso))
+        sig = (p0.sigma, p0.sigma / r)      # contour-aligned
+    elif p0.aniso < 0:
+        sig = (p0.sigma / r, p0.sigma)      # gradient-aligned
     else:
-        gauss = gaussian_filter(veg, sigma=( p0.sigma/p0.aniso, p0.sigma))
+        sig = (p0.sigma, p0.sigma)           # isotropic
+    gauss = gaussian_filter(veg, sigma=sig)
     threshold = np.percentile(gauss, p0.fV*100)
     veg[gauss > threshold] = 0
     veg[gauss <= threshold] = 1

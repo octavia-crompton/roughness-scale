@@ -1,5 +1,5 @@
-Figure Registry (concise)  •  2026-03-07 08:32
-Source: notebooks/roughness_scale-cf.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
+Figure Registry (concise)  •  2026-03-09 05:27
+Source: notebooks/roughness_scale-analysis.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
 Fig 3 — fig3_effect_ratio_vs_sigma_grid.png

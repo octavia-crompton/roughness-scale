@@ -1,17 +1,17 @@
-import numpy as np
-import matplotlib.pylab as plt
-import cv2
-plt.rcParams['savefig.bbox'] = 'tight'
-import matplotlib.animation as animation
-import matplotlib.colors as colors
-from matplotlib import cm
-import matplotlib.gridspec as gridspec
-import cmocean
-from plot_SWOF import *
+import numpy as np  # Numerical operations
+import matplotlib.pyplot as plt  # Plotting
+import cv2  # OpenCV for image processing
+plt.rcParams['savefig.bbox'] = 'tight'  # Savefig config
+import matplotlib.animation as animation  # Animation support
+import matplotlib.colors as colors  # Color normalization
+from matplotlib import cm  # Colormap handling
+import matplotlib.gridspec as gridspec  # Grid layout for subplots
+import cmocean  # Oceanographic colormaps
+from plot_SWOF import *  # Project-specific plotting utilities
 
 def fix_axes(ax):
     """
-    Set up 3D axes (and get rid of colored axis planes)
+    Configure 3D axes for cleaner visuals (remove colored panes, ticks, grid).
     """
     ax.xaxis.pane.fill = False
     ax.yaxis.pane.fill = False
@@ -22,38 +22,36 @@ def fix_axes(ax):
     ax.set_xticks([])
     ax.set_zticks([])
     ax.set_yticks([])
-
     ax.grid(False)
-
     return ax
 
 
 def make_filename(sim, cols = [ 'p', 'Ks_v']):
-    '''
-    '''
+    """
+    Generate a filename string from simulation parameters.
+    """
     title = ','.join(['{0}={1}'.format(k, sim[k]) for k in cols])
     title = '{0}'.format(title)  
-    
     if "scenario" in  sim:
         return  title  +  "," + sim.scenario  
     else: 
         return title
 
 def animation_flds(sim,  dt_anim = 10, trim = 100, truncate = True, max_U = 0.2):
-    
-    fps = int(60/sim['dt']) # frame per sec
-
-    freq = max(1, int(dt_anim/sim['dt']))
-
-    hydro_freq =  max(1, int(dt_anim))
-    U = np.sqrt(sim.uc**2 + sim.vc**2)[::freq, :, :trim]
-    V = sim.uc[::freq, :, :trim]
-    I = sim.I[::freq, :, :trim]    
-    
+    """
+    Extract and preprocess simulation fields for animation.
+    Returns: processed arrays and animation parameters.
+    """
+    fps = int(60/sim['dt']) # frames per second
+    freq = max(1, int(dt_anim/sim['dt']))  # animation frame frequency
+    hydro_freq =  max(1, int(dt_anim))     # hydrograph frequency
+    U = np.sqrt(sim.uc**2 + sim.vc**2)[::freq, :, :trim]  # velocity magnitude
+    V = sim.uc[::freq, :, :trim]  # u-component
+    I = sim.I[::freq, :, :trim]   # infiltration
+    # Patch edge values for U
     t, x, y = np.where(U > max_U)
     xx = x[x< sim.Nxcell]
     U[t, xx , y] =   U[t, xx - 1, y] 
-
     xx = x[x ==  sim.Nxcell]
     if len(xx > 0):
         U[t, xx , y] =  U[t, xx - 1, y] 
@@ -82,9 +80,10 @@ def animation_flds(sim,  dt_anim = 10, trim = 100, truncate = True, max_U = 0.2)
 
 
 def format_colorbar(fld, cmap, cbaxes, fmt, label = "cm"  , vmin = 0):
-    
+    """
+    Draw a colorbar for a given field and colormap.
+    """
     from matplotlib.ticker import FuncFormatter
-    
     a = np.array([[np.round(vmin*100, 2), np.round(fld*100, 2)]])
     plt.figure(figsize=(0, 0))
     img = plt.imshow(a, cmap=cmap)
@@ -95,30 +94,27 @@ def format_colorbar(fld, cmap, cbaxes, fmt, label = "cm"  , vmin = 0):
 
 class animation_class:
     """
-    Contains the FullSWOF results
+    Container for FullSWOF simulation results and derived fields for animation.
     """
     def __init__(self, sim, dt_anim = 10, trim = 100):
-        
+        # Animation parameters
         fps = int(sim['dt']/3) # frame per sec
-
         freq = max(1, int(dt_anim/sim['dt']))
-
         hydro_freq =  max(1, int(dt_anim))
+        # Extract fields
         U = np.sqrt(sim.uc**2 + sim.vc**2)[::freq, :, :trim]
         V = sim.uc[::freq, :, :trim]
         I = sim.I[::freq, :, :trim]    
-
         hc =  sim.hc[::freq, :, :trim]
         t = sim.t[::freq]
         hydro = sim.hydro[::freq][:len(U)]
-
         yc = sim.yc[:, :trim]
         xc = sim.xc[:, :trim] 
         zc = sim.zc[:, :trim]
         zc = zc - zc.min() 
-
+        # Compute frame number
         frn = (hc.mean(1).mean(1)*100 > 0.01).sum()
-        
+        # Store fields
         self.fps = fps
         self.freq = freq
         self.hydro_freq = hydro_freq
@@ -132,7 +128,7 @@ class animation_class:
         self.yc = yc
         self.zc = zc
         self.frn = frn 
-        
+        # Vegetation mask and colors
         veg_norm = colors.Normalize(0., 1.1)
         self.veg = sim.veg - cv2.erode(sim.veg, np.ones((3,3)), 1)
         self.veg_colors = cm.Greens(veg_norm(self.veg ))   
