@@ -564,7 +564,7 @@ def plot_surface(sim, fld, title = '', color = cm.Greens,
         veg = veg - cv2.erode(veg, np.ones((3,3)), 1)
     veg_colors = cm.Greens(veg_norm(veg ))
 
-    ax.w_xaxis.set_pane_color((1.0, 1.0, 1.0, 1.0))
+    ax.xaxis.set_pane_color((1.0, 1.0, 1.0, 1.0))
 
     if plot_veg:
         
