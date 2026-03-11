@@ -42,7 +42,7 @@ default = {
            "Ks_b" : 'Ks_v',
            "p" : 5,
            "sigma" : 1,
-           "dt" : 30,           
+           "dt" : 60,           
            "flux" : 1,
            "aniso" : 1,
            "fric" : 1,
@@ -62,7 +62,7 @@ sim_dict = {
             "Ks_v" : [3],            
             "So" : [0.01],
             "veg_type" : ["band", "v_band"],
-            "stripe_count" : [4, 6, 10],  
+            "stripe_count" : [4, 6, 8, 10],  
             "seed" : [1],
             "fV" : [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95],
             # "aniso" : [-1, 0, 1]

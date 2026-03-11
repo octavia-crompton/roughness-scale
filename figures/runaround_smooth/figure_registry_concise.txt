@@ -1,4 +1,4 @@
-Figure Registry (concise)  •  2026-03-09 05:27
+Figure Registry (concise)  •  2026-03-10 12:50
 Source: notebooks/roughness_scale-analysis.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
@@ -12,4 +12,4 @@ Fig 5 — fig5_pred_vs_obs_CF.png
   Predicted vs observed n_e/<n> for four CF methods, coloured by sigma. Felkel performs best (R²=0.68); 2nd-order $T_0$ (CF) is weakest (R²=0.15).
 
 SI1 — SI1_CF_errors_3panel.png
-  CF diagnostic coloured by tr: relative U and h errors vs CF values, plus h/U identity comparison.
+  CF diagnostic coloured by tr: relative U and h errors vs CF values, plus h/U identity for correction factor.

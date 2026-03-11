@@ -12,6 +12,7 @@ import sys
 import shutil
 import itertools as it
 import contextlib
+
 import json
 from multiprocessing import Pool
 
@@ -31,39 +32,40 @@ else:
     project_dir = "/glade/u/home/octaviacrompton/FullCSWOF/Tests"
     exec_name = "/glade/u/home/octaviacrompton/FullCSWOF/bin/FullSWOF_2D" # ../../bin/FullSWOF_2D    
 
-out_name = "runaround_smooth"
+out_name = "runaround_equiv_smooth"
 out_dir = os.path.join(project_dir, out_name)
     
 default = {
-           "L" : 100,
-           "dx" : 2,
-           "alpha_b" : 0.05,
-           "scale" : 1,
-           "Ks_b" : 'Ks_v',
+           "L" : 10, 
+           "dx" : 2,                      
+           "alpha_v" : 0.5,
+           "scale" : 1, 
+           "Ks_b" : 'Ks_v',            
            "p" : 5,
+           "tr" : 30,
            "sigma" : 5,
-           "dt" : 60,           
+           "dt" : 60,
+           "aniso" : 1,
            "flux" : 1,
-           "veg_type" : "blob",                
+           "veg_type" : "blob",        
+           "fV" : 0.2,                   
            "fric" : 1,
            "scale" : 1,
            "scheme" : 'manning',
            'seed' : 1, 
            "B_bc_init" : 2,
-           "sigma" : 2           
+           "sigma" : 2
           }
 
+
 sim_dict = {
-            "p" : [5, 8],        # high and low Re
-            "tr" : [30, 60],     # longer time for flow to evolve
-            "l" : [200],           
-            "alpha_v" : [0.2], 
+            "p" : [5, 8], 
+            "tr" : [30, 60], 
+            "l" : [200],
+            "fV" : [0.],            
+            "alpha_b" : np.round(np.linspace(0.03, 0.2, 141),3), 
             "Ks_v" : [3],            
-            "So" : [0.01],
-            "sigma" : [ 1, 2, 3, 4, 5],  
-            "seed" : [1, 2, 3],
-            "fV" : [ 0.1, 0.2, 0.4, 0.5, 0.6, 0.8, 0.9],
-            "aniso" : [-2, 1, 2]
+            "So" : [0.01]
             }
 
 sim_vars = sim_dict.keys()
@@ -81,7 +83,7 @@ def call_SWOF(sdict):
 
     """       
     path = os.path.join(out_dir, "sim_list.json")
-    
+	
     with open(path, 'w') as fout:
         json.dump(sim_list , fout)
 
@@ -106,7 +108,6 @@ def call_SWOF(sdict):
     case = default.copy()
     case.update(sdict) 
 
-    # case['fV'] = np.random.rand()*0.25 + 0.05
     if 'p-Ks_v' in case:
         case['Ks_v'] = case['p'] - case['p-Ks_v']
 
@@ -120,7 +121,8 @@ def call_SWOF(sdict):
         case["t_rec"] = 50
     else:
         case["t_rec"] = 50        
-    
+
+    case["alpha_b"] = np.round(case['alpha_b'], 3)
     case['T'] = (case['tr']+ case['t_rec'])*60
 
     p0 = Params(".", case, overwrite = 1,  T = case['T'])  
@@ -159,15 +161,16 @@ def call_SWOF(sdict):
     write_input(case, case_dir = ".", sim_dir = sim_dir)        
 
     start = time.time()
+    print("starting: " + sim_name)
     
     cmdout = os.popen("cd {0}; {1} ".format(sim_dir, exec_name)).read()
     end = time.time()
+    # print (cmdout)
     os.remove(os.path.join(sim_dir, "Outputs", "flux_boundaries_LR.dat"))
     os.remove(os.path.join(sim_dir, "Outputs", "flux_boundaries_BT.dat"))
 
     cmdout =  process_cmdout(cmdout), (end-start)
     print("finishing: " + sim_name)
-
     return  cmdout
 
 def process_cmdout(cmdout):
@@ -194,7 +197,7 @@ if __name__ == "__main__":
     shutil.copy("read_SWOF.py", out_dir  + "/code")
 
     print("starting simulations")
-    call_SWOF(sim_list[0])
+    # call_SWOF(sim_list[0])
     start = time.time()
     from multiprocessing import Pool
     pool = Pool()
