@@ -1,5 +1,5 @@
-Figure registry  •  created 2026-03-12 11:41
-Source notebook  :  notebooks/roughness_scale-cf.ipynb
+Figure registry  •  created 2026-03-13 06:11
+Source notebook  :  notebooks/roughness_scale-analysis.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
@@ -34,8 +34,8 @@ Residual structure is most associated with sigma.
 
 ### fig5 ###
 File     : fig5_pred_vs_obs_CF.png
-Updated  : 2026-03-12 11:41
-Notebook : notebooks/roughness_scale-cf.ipynb
+Updated  : 2026-03-13 05:25
+Notebook : notebooks/roughness_scale-cf-channel_eqs.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 Predicted vs observed n_e/<n> for four CF-field methods (Leading term, T0, Lotter, Felkel).
@@ -53,8 +53,8 @@ Residuals correlate most with sigma; dominant errors occur at extreme sigma valu
 
 ### SI1 ###
 File     : SI1_CF_errors_3panel.png
-Updated  : 2026-03-12 11:41
-Notebook : notebooks/roughness_scale-cf.ipynb
+Updated  : 2026-03-13 05:25
+Notebook : notebooks/roughness_scale-cf-channel_eqs.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 Three-panel correction-factor diagnostic.
@@ -64,7 +64,7 @@ Panel 3: h/U identity comparison (correction factor only).
 
 ### SI2 ###
 File     : SI2_effect_ratio_vs_sigma_grid.png
-Updated  : 2026-03-11 18:35
+Updated  : 2026-03-13 06:11
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
