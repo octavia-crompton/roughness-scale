@@ -1,5 +1,5 @@
-Figure registry  •  created 2026-03-11 15:57
-Source notebook  :  notebooks/roughness_scale-analysis.ipynb
+Figure registry  •  created 2026-03-12 11:41
+Source notebook  :  notebooks/roughness_scale-cf.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
@@ -14,7 +14,7 @@ $n_e/\langle n \rangle$ vs $\sigma$ for all simulations at $f_V \approx 0.6$, or
 
 ### fig4 ###
 File     : fig4_obs_vs_pred_re_6panel.png
-Updated  : 2026-03-09 12:20
+Updated  : 2026-03-12 11:41
 Notebook : notebooks/roughness_scale-cf.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -22,19 +22,19 @@ Observed vs predicted r_e for six equivalent-roughness expressions (Horton-Einst
 Markers coloured by sigma (highest mean |r| with residual across expressions).
 
 Per-expression performance:
-  - Horton–Einstein: R²=0.88, RMSE=0.036
-  - Pavlovskii: R²=0.85, RMSE=0.042
-  - Lotter: R²=0.98, RMSE=0.009
-  - Cox (arithmetic): R²=0.91, RMSE=0.029
-  - Shear-force: R²=0.91, RMSE=0.031
-  - Felkel: R²=0.96, RMSE=0.010
+  - Horton–Einstein: R²=0.87, RMSE=0.038
+  - Pavlovskii: R²=0.85, RMSE=0.046
+  - Lotter: R²=0.97, RMSE=0.011
+  - Cox (arithmetic): R²=0.91, RMSE=0.030
+  - Shear-force: R²=0.90, RMSE=0.033
+  - Felkel: R²=0.95, RMSE=0.012
 
 Residual structure is most associated with sigma.
 ### end fig4 ###
 
 ### fig5 ###
 File     : fig5_pred_vs_obs_CF.png
-Updated  : 2026-03-09 12:20
+Updated  : 2026-03-12 11:41
 Notebook : notebooks/roughness_scale-cf.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -43,17 +43,17 @@ Markers coloured by sigma (highest |r| with leading-term residual).
 RMSE/R² annotated per panel.
 
 Per-method performance:
-  - Leading term (CF): R²=0.67, RMSE=0.108
-  - 2nd-order $T_0$ (CF): R²=0.15, RMSE=0.208
-  - Lotter (CF): R² undefined, RMSE=0.225
-  - Felkel: R²=0.68, RMSE=0.062
+  - Leading term (CF): R²=0.56, RMSE=0.096
+  - 2nd-order $T_0$ (CF): R²=0.13, RMSE=0.207
+  - Lotter (CF): R² undefined, RMSE=0.239
+  - Felkel: R²=0.51, RMSE=0.080
 
 Residuals correlate most with sigma; dominant errors occur at extreme sigma values.
 ### end fig5 ###
 
 ### SI1 ###
 File     : SI1_CF_errors_3panel.png
-Updated  : 2026-03-09 13:06
+Updated  : 2026-03-12 11:41
 Notebook : notebooks/roughness_scale-cf.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -61,3 +61,12 @@ Three-panel correction-factor diagnostic.
 Panels 1 & 2: relative U and h errors vs CF values, coloured by tr.
 Panel 3: h/U identity comparison (correction factor only).
 ### end SI1 ###
+
+### SI2 ###
+File     : SI2_effect_ratio_vs_sigma_grid.png
+Updated  : 2026-03-11 18:35
+Notebook : notebooks/roughness_scale-analysis.ipynb
+Saved in : ../figures/runaround_smooth
+────────────────────────────────────────────────────────────────────────
+$n_e/\langle n \rangle$ vs $\sigma$ for all simulations at $f_V \approx 0.6$, organised in a grid of panels by rainfall intensity ($p$, rows) and storm duration ($t_r$, columns). Points are coloured and shaped by vegetation arrangement type (or anisotropy when only blob patterns are present). Orientation categories are offset horizontally (±0.15 in $\sigma$) for clarity.
+### end SI2 ###

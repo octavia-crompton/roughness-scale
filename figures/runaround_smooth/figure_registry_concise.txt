@@ -1,15 +1,18 @@
-Figure Registry (concise)  •  2026-03-11 15:57
-Source: notebooks/roughness_scale-analysis.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
+Figure Registry (concise)  •  2026-03-12 11:41
+Source: notebooks/roughness_scale-cf.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
 Fig 3 — fig3_effect_ratio_vs_sigma_grid.png
   Effect ratio vs sigma at fV≈0.6, panelled by p×tr, coloured by veg type / anisotropy. Reveals how spatial heterogeneity (sigma) and storm forcing jointly control the effective-roughness enhancement.
 
 Fig 4 — fig4_obs_vs_pred_re_6panel.png
-  Observed vs predicted r_e for six composite-roughness expressions, coloured by sigma. Lotter tracks the 1:1 line best (R²=0.98); Pavlovskii is weakest (R²=0.85).
+  Observed vs predicted r_e for six composite-roughness expressions, coloured by sigma. Lotter tracks the 1:1 line best (R²=0.97); Pavlovskii is weakest (R²=0.85).
 
 Fig 5 — fig5_pred_vs_obs_CF.png
-  Predicted vs observed n_e/<n> for four CF methods, coloured by sigma. Felkel performs best (R²=0.68); 2nd-order $T_0$ (CF) is weakest (R²=0.15).
+  Predicted vs observed n_e/<n> for four CF methods, coloured by sigma. Leading term (CF) performs best (R²=0.56); 2nd-order $T_0$ (CF) is weakest (R²=0.13).
 
 SI1 — SI1_CF_errors_3panel.png
   CF diagnostic coloured by tr: relative U and h errors vs CF values, plus h/U identity for correction factor.
+
+SI2 — SI2_effect_ratio_vs_sigma_grid.png
+  Effect ratio vs sigma at fV≈0.6, panelled by p×tr, coloured by veg type / anisotropy. Reveals how spatial heterogeneity (sigma) and storm forcing jointly control the effective-roughness enhancement.
