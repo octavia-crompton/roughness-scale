@@ -1,4 +1,4 @@
-Figure registry  •  created 2026-03-13 06:11
+Figure registry  •  created 2026-03-13 07:40
 Source notebook  :  notebooks/roughness_scale-analysis.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -64,7 +64,7 @@ Panel 3: h/U identity comparison (correction factor only).
 
 ### SI2 ###
 File     : SI2_effect_ratio_vs_sigma_grid.png
-Updated  : 2026-03-13 06:11
+Updated  : 2026-03-13 07:40
 Notebook : notebooks/roughness_scale-analysis.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────

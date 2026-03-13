@@ -1,4 +1,4 @@
-Figure Registry (concise)  •  2026-03-13 06:11
+Figure Registry (concise)  •  2026-03-13 07:40
 Source: notebooks/roughness_scale-analysis.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
