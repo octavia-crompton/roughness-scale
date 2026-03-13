@@ -1,5 +1,5 @@
-Figure Registry (concise)  •  2026-03-13 07:40
-Source: notebooks/roughness_scale-analysis.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
+Figure Registry (concise)  •  2026-03-13 07:58
+Source: notebooks/roughness_scale-cf-channel_eqs.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
 Fig 3 — fig3_effect_ratio_vs_sigma_grid.png
@@ -14,5 +14,5 @@ Fig 5 — fig5_pred_vs_obs_CF.png
 SI1 — SI1_CF_errors_3panel.png
   CF diagnostic coloured by tr: relative U and h errors vs CF values, plus h/U identity for correction factor.
 
-SI2 — SI2_effect_ratio_vs_sigma_grid.png
-  Effect ratio vs sigma at fV≈0.6, panelled by p×tr, coloured by veg type / anisotropy. Reveals how spatial heterogeneity (sigma) and storm forcing jointly control the effective-roughness enhancement.
+SI2 — SI2_channel_eqs_9panel.png
+  Nine composite-channel equations vs observed r_e, coloured by sigma. Lotter performs best (R2=0.97); Colebatch weakest.

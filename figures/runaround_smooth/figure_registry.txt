@@ -1,5 +1,5 @@
-Figure registry  •  created 2026-03-13 07:40
-Source notebook  :  notebooks/roughness_scale-analysis.ipynb
+Figure registry  •  created 2026-03-13 07:58
+Source notebook  :  notebooks/roughness_scale-cf-channel_eqs.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
@@ -63,10 +63,24 @@ Panel 3: h/U identity comparison (correction factor only).
 ### end SI1 ###
 
 ### SI2 ###
-File     : SI2_effect_ratio_vs_sigma_grid.png
-Updated  : 2026-03-13 07:40
-Notebook : notebooks/roughness_scale-analysis.ipynb
+File     : SI2_channel_eqs_9panel.png
+Updated  : 2026-03-13 07:58
+Notebook : notebooks/roughness_scale-cf-channel_eqs.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
-$n_e/\langle n \rangle$ vs $\sigma$ for all simulations at $f_V \approx 0.6$, organised in a grid of panels by rainfall intensity ($p$, rows) and storm duration ($t_r$, columns). Points are coloured and shaped by vegetation arrangement type (or anisotropy when only blob patterns are present). Orientation categories are offset horizontally (±0.15 in $\sigma$) for clarity.
+Observed r_e vs predicted n_c for nine composite-channel equations (Lotter, Pavlovskii, Horton-Einstein, Cox, Krishnamurthy-Christensen, Colebatch, Yen R^1/6, Yen R^1/3, Felkel).
+Coloured by sigma. Missing methods annotated for compute rerun.
+
+Per-method performance (sorted by R2):
+  - Lotter: R2=0.97, RMSE=0.0072
+  - Felkel: R2=0.95, RMSE=0.0117
+  - Krishnamurthy-Christensen: R2=0.93, RMSE=0.0267
+  - Yen R^{1/6}: R2=0.91, RMSE=0.0322
+  - Cox / arithmetic: R2=0.91, RMSE=0.0300
+  - Yen R^{1/3}: R2=0.90, RMSE=0.0295
+  - Horton-Einstein: R2=0.87, RMSE=0.0382
+  - Pavlovskii: R2=0.85, RMSE=0.0457
+  - Colebatch: R2=0.84, RMSE=0.0469
+
+Best: Lotter (R2=0.97); Worst: Colebatch (R2=0.84).
 ### end SI2 ###
