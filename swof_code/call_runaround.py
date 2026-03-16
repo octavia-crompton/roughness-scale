@@ -62,8 +62,8 @@ sim_dict = {
             "So" : [0.01],
             "sigma" : [ 1, 2, 3, 4, 5],  
             "seed" : [1, 2, 3],
-            "fV" : [ 0.1, 0.2, 0.4, 0.5, 0.6, 0.8, 0.9],
-            "aniso" : [-2, 1, 2]
+            "fV" : np.linspace(0.05, 0.95, 7),
+            "aniso" : [-3, 1, 3]
             }
 
 sim_vars = sim_dict.keys()
