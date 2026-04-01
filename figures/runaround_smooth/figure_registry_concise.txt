@@ -1,9 +1,15 @@
-Figure Registry (concise)  •  2026-03-17 13:11
-Source: notebooks/roughness_scale-analysis.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
+Figure Registry (concise)  •  2026-03-31 17:36
+Source: notebooks/roughness_scale-compute.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
-Fig 3 — fig3_effect_ratio_vs_sigma_grid.png
-  Effect ratio vs sigma at fV≈0.6, panelled by p×tr, coloured by veg type / anisotropy. Reveals how spatial heterogeneity (sigma) and storm forcing jointly control the effective-roughness enhancement.
+Fig 1 — fig1_conceptual_sketch.png
+  Conceptual sketch illustrating the equivalent-roughness problem on a heterogeneous hillslope ($f_V=0.4$, $n_{\rm veg}=0.20$, $n_{\rm bare}=0.05$). Panel (a) shows the patchy surface, (b) the uniform-roughness stack, and (c) the matched hydrograph, making the question '$n_e = ?$' explicit.
+
+Fig 2 — fig2_effect_ratio_fV_2x2.png
+  Main results figure: $n_e/\langle n\rangle$ vs $f_V$ for least and most intense storms (top row) with corresponding hydrographs at $f_V\approx 0.5$ (bottom row), both coloured by patch lengthscale $L_V$. Demonstrates that the ratio is always below unity, is minimised near $f_V=0.5$, and increases with patch size.
+
+Fig 3 — fig3_Sf_decomp_3x3.png
+  $S_f$ decomposition figure (3×3): row 1 compares observed, $T_2$, and Lotter effect ratios vs $f_V$; rows 2–3 show the six dispersive-flux terms. Coloured by patch lengthscale $L_V$. Rows 2–3 share a y-axis so term magnitudes can be compared directly.
 
 Fig 4 — fig4_obs_vs_pred_re_6panel.png
   Observed vs predicted r_e for six composite-roughness expressions, coloured by sigma. Lotter tracks the 1:1 line best (R²=0.97); Pavlovskii is weakest (R²=0.85).

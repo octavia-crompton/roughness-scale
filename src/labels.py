@@ -69,6 +69,8 @@ rename = {
     "aniso"              : "anisotropy",
     "tr"                 : r"$t_R$",
     "l"                  : r"$L$",
+    "LV"                 : r"$L_V$ (median vegetation patch length)",
+    "LB"                 : r"$L_B$ (median bare-soil patch length)",
     "seed"               : "seed",
     "radius"             : r"$r$",
     "Re"                 : r"$Re$",
