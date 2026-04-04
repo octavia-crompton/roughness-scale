@@ -1,5 +1,5 @@
-Figure registry  •  created 2026-03-31 17:36
-Source notebook  :  notebooks/roughness_scale-compute.ipynb
+Figure registry  •  created 2026-04-03 18:40
+Source notebook  :  notebooks/roughness_scale-decomp.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
@@ -23,7 +23,7 @@ Saved in : ../figures/runaround_smooth
 
 ### fig3 ###
 File     : fig3_Sf_decomp_3x3.png
-Updated  : 2026-03-31 08:54
+Updated  : 2026-04-03 18:40
 Notebook : notebooks/roughness_scale-decomp.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────

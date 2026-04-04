@@ -1,5 +1,5 @@
-Figure Registry (concise)  •  2026-03-31 17:36
-Source: notebooks/roughness_scale-compute.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
+Figure Registry (concise)  •  2026-04-03 18:40
+Source: notebooks/roughness_scale-decomp.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
 Fig 1 — fig1_conceptual_sketch.png
