@@ -35,7 +35,7 @@ roughness-scale/
 │   └── archive/                       ← old/dated notebooks
 ├── figures/
 │   └── <batch_case>/                  ← e.g. runaround_smooth/
-│       ├── fig4_*.png, fig5_*.png     ← publication figures
+│       ├── fig1_*.png … fig6_*.png    ← publication figures
 │       ├── figure_registry.txt        ← full registry (auto-generated)
 │       ├── figure_registry_concise.txt← concise registry (auto-generated)
 │       └── scratch/                   ← exploratory figures (never registered)
@@ -191,10 +191,10 @@ Every publication figure save must call `update_figure_registry()`:
 
 ```python
 _fig_dir, _, _ = _fig_dirs()
-_name = 'fig4_obs_vs_pred_re_6panel.png'
+_name = 'fig5_obs_vs_pred_re_6panel.png'
 fig.savefig(_os.path.join(_fig_dir, _name), dpi=300, bbox_inches='tight')
 update_figure_registry(
-    'fig4', _name,
+    'fig5', _name,
     description='Full multi-line description with interpretation...',
     concise='Two-sentence human summary. Key takeaway.')
 ```
@@ -220,20 +220,20 @@ fig.savefig(_os.path.join(_scratch, 'name.png'), dpi=200, bbox_inches='tight')
 ### Registry entry format (full)
 
 ```
-### fig4 ###
-File     : fig4_obs_vs_pred_re_6panel.png
+### fig5 ###
+File     : fig5_obs_vs_pred_re_6panel.png
 Updated  : 2026-02-28 13:36
-Notebook : notebooks/roughness_scale-analysis.ipynb
+Notebook : notebooks/roughness_scale-cf.ipynb
 Saved in : figures/runaround_smooth
 ────────────────────────────────────────
 <description with interpretation>
-### end fig4 ###
+### end fig5 ###
 ```
 
 ### Registry entry format (concise)
 
 ```
-Fig 4 — fig4_obs_vs_pred_re_6panel.png
+Fig 5 — fig5_obs_vs_pred_re_6panel.png
   <Two sentences: description + interpretation.>
 ```
 
@@ -299,7 +299,7 @@ brew install --cask mactex-no-gui
 ### Conventions
 
 - **Do not hand-edit** the generated `.tex` files — they are overwritten on every build
-- Figure labels match registry IDs: `\label{fig:fig4}`, `\label{fig:SI1}`, etc.
+- Figure labels match registry IDs: `\label{fig:fig5}`, `\label{fig:SI1}`, etc.
 - One document per batch folder (`runaround_smooth_figures.tex`, etc.)
 - The concise registry caption is used as `\caption{…}`; if empty, filename is shown
 - New batch folders are auto-discovered when `build_figure_doc.py` runs with no args

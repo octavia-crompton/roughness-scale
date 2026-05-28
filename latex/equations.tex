@@ -1,0 +1,363 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\avg}[1]{\langle #1 \rangle}
+\newcommand{\neff}{n_e}
+\newcommand{\nc}{n_c}
+\newcommand{\Sf}{S_f}
+\newcommand{\So}{S_0}
+
+\title{Roughness-Scale Project --- Key Equations}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%% ======================================================================
+\section{Saint-Venant Equations with Manning Friction}
+%% ======================================================================
+
+\subsection{Shallow Water Equations (1-D)}
+
+Continuity:
+\begin{equation}\label{eq:continuity}
+  \frac{\partial h}{\partial t} + \frac{\partial (Uh)}{\partial x} = p - i
+\end{equation}
+
+Momentum:
+\begin{equation}\label{eq:momentum}
+  \frac{\partial U}{\partial t} + U\frac{\partial U}{\partial x}
+  + g\frac{\partial h}{\partial x} + g\bigl(\Sf - \So\bigr) = 0
+\end{equation}
+
+\subsection{Manning's Friction Closure}
+
+Friction slope:
+\begin{equation}\label{eq:Sf}
+  \Sf = \frac{n^2\, U^2}{h^{4/3}}
+\end{equation}
+
+Unit discharge (kinematic wave):
+\begin{equation}\label{eq:q}
+  q = \frac{1}{n}\, h^{5/3}\, \So^{1/2}
+\end{equation}
+
+
+%% ======================================================================
+\section{Equivalent Roughness: the Effect Ratio}
+%% ======================================================================
+
+The \emph{effect ratio} $\neff/\avg{n}$ is the equivalent Manning's~$n$ normalised by the spatial mean.
+A value below unity means the heterogeneous surface behaves as if it were smoother than the average roughness.
+
+\subsection{Lotter Equation (Equal-Discharge Condition)}
+
+The equal-discharge condition requires that total discharge from the heterogeneous surface match that from a uniform surface with $\neff$:
+\begin{equation}\label{eq:lotter}
+  \neff = \frac{\avg{h}^{5/3}}{\avg{\dfrac{h^{5/3}}{n}}}
+\end{equation}
+
+Dividing by $\avg{n}$ gives the effect ratio in Lotter form:
+\begin{equation}\label{eq:lotter-ratio}
+  \frac{\neff}{\avg{n}}
+  = \frac{\avg{h}^{5/3}}{\avg{n}\;\avg{\dfrac{h^{5/3}}{n}}}
+\end{equation}
+
+\subsection{Jensen's Inequality}
+
+Because $h^{5/3}$ is convex:
+\begin{equation}\label{eq:jensen}
+  \avg{h^{5/3}} > \avg{h}^{5/3}
+\end{equation}
+This is the fundamental reason $\neff/\avg{n} < 1$: vegetation induces depth variance; the nonlinear weighting $h^{5/3}$ means fast (deep, smooth) zones carry disproportionately more discharge.
+
+
+%% ======================================================================
+\section{Spatial Decomposition of $\Sf$}
+%% ======================================================================
+
+\subsection{Reynolds Decomposition}
+
+Decompose the spatially varying fields into mean and fluctuation:
+\begin{equation}
+  n = \avg{n} + n', \quad
+  U = \avg{U} + U', \quad
+  h = \avg{h} + h'
+\end{equation}
+
+Normalised fluctuations:
+\begin{equation}
+  r = \frac{n'}{\avg{n}}, \qquad
+  \upsilon = \frac{U'}{\avg{U}}, \qquad
+  \eta = \frac{h'}{\avg{h}}
+\end{equation}
+
+\subsection{Second-Order Expansion of Spatially Averaged $\Sf$}
+
+\begin{equation}\label{eq:Sf-decomp}
+  \frac{\avg{\Sf}\;\avg{h}^{4/3}}{\avg{n}^2\;\avg{U}^2}
+  \;\approx\;
+  1
+  + \avg{r^2}
+  + \avg{\upsilon^2}
+  + 4\avg{r\upsilon}
+  - \tfrac{8}{3}\bigl(\avg{r\eta} + \avg{\upsilon\eta}\bigr)
+  + \tfrac{14}{9}\avg{\eta^2}
+\end{equation}
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Term & Interpretation \\
+\midrule
+$\avg{r^2}$            & Roughness variance \\
+$\avg{\upsilon^2}$      & Velocity variance (fast/slow zones) \\
+$4\avg{r\upsilon}$      & Roughness--velocity covariance \\
+$-\tfrac{8}{3}\avg{r\eta}$ & Depth--roughness covariance \\
+$-\tfrac{8}{3}\avg{\upsilon\eta}$ & Depth--velocity covariance \\
+$\tfrac{14}{9}\avg{\eta^2}$ & Depth variance \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+%% ======================================================================
+\section{Correction Factor: Second-Order Taylor Expansion}
+%% ======================================================================
+
+The effect ratio expanded to second order in $(r, \upsilon, \eta)$:
+\begin{equation}\label{eq:CF1}
+  \frac{\neff}{\avg{n}}
+  \;\approx\;
+  1
+  - \avg{r^2}
+  - \tfrac{5}{9}\avg{\eta^2}
+  + \tfrac{5}{3}\avg{r\eta}
+\end{equation}
+
+Alternative (velocity-based):
+\begin{equation}\label{eq:CF2}
+  \frac{\neff}{\avg{n}}
+  \;\approx\;
+  1
+  + \tfrac{1}{4}\avg{r^2}
+  + \tfrac{5}{4}\avg{\upsilon^2}
+  + \tfrac{5}{2}\avg{r\upsilon}
+\end{equation}
+
+\subsection{Prediction Hierarchy}
+
+\begin{description}
+  \item[$T_0$] Leading term: uses only roughness variance $\avg{r^2}$ (known from the $n$-field alone).
+  \item[$T_1$] Adds roughness--velocity and roughness--depth covariances.
+  \item[$T_2$] Full 2nd-order: all six terms --- best accuracy but requires simulation fields.
+  \item[CF approx] Replaces simulation covariances with analytical correction factors.
+\end{description}
+
+
+%% ======================================================================
+\section{Composite Channel Equations}
+%% ======================================================================
+
+Classical equivalent-roughness formulas designed for compound channels, applied here to patchy hillslopes.
+Each formula computes a composite roughness $\nc$ from the spatially distributed Manning's~$n_i$ and (where needed) depth~$h_i$.
+
+\medskip
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\textwidth}{@{}clX@{}}
+\toprule
+\# & Method & Formula \\
+\midrule
+1 & Lotter &
+  $\displaystyle \nc = \frac{\bar{h}^{\,5/3}}%
+  {\left\langle \dfrac{h_i^{\,5/3}}{n_i} \right\rangle}$ \\[4pt]
+
+2 & Pavlovskii &
+  $\displaystyle \nc = \sqrt{\avg{n_i^2}}$ \\
+
+3 & Horton--Einstein &
+  $\displaystyle \nc = \avg{n_i^{3/2}}^{\,2/3}$ \\
+
+4 & Cox (arith.\ mean) &
+  $\displaystyle \nc = \avg{n_i}$ \\
+
+5 & Krishnamurthy--Chr. &
+  $\displaystyle \nc = \exp\!\left(\frac{\avg{h_i^{3/2}\ln n_i}}%
+  {\avg{h_i^{3/2}}}\right)$ \\[4pt]
+
+6 & Colebatch &
+  $\displaystyle \nc = \left(\frac{\avg{h_i\, n_i^{3/2}}}%
+  {\bar{h}}\right)^{\!2/3}$ \\[4pt]
+
+7 & Yen $R^{1/6}$ &
+  $\displaystyle \nc = \bar{h}^{\,1/6}\left\langle
+  \frac{n_i}{h_i^{\,1/6}} \right\rangle$ \\[4pt]
+
+8 & Yen $R^{1/3}$ &
+  $\displaystyle \nc = \frac{\avg{h_i^{\,1/3}\, n_i}}%
+  {\bar{h}^{\,1/3}}$ \\[4pt]
+
+9 & Felkel &
+  $\displaystyle \nc = \frac{1}{\avg{n_i^{-1}}}$ \\
+\bottomrule
+\end{tabularx}
+\caption{Composite-channel equations for equivalent roughness.
+  $n_i$ = Manning's coefficient at cell~$i$;
+  $h_i$ = depth at cell~$i$;
+  $\bar{h} = \avg{h_i}$ = spatial mean depth;
+  $\avg{\cdot}$ = spatial average.}
+\label{tab:channel-eqs}
+\end{table}
+
+\subsection{Lotter Reduces to Unity Under CF Approximation}
+
+Under the kinematic-wave correction-factor (CF) approximation, $h_i \propto n_i^{3/5}$, so
+\[
+  h_i^{5/3} = C \cdot n_i
+  \quad\text{where } C = \bigl(q_0\, l / \So^{1/2}\bigr)
+\]
+is cell-independent.  Therefore $\avg{h^{5/3}/n} = C$ and $\nc = \bar{h}^{5/3}/(C\avg{n})$, which equals $\avg{n}$, making $\nc/\avg{n} = 1$ --- i.e., the Lotter equation becomes uninformative when depth variations follow the kinematic-wave scaling.
+
+
+%% ======================================================================
+\section{Length-Scale Attribution of $\Sf$ Decomposition}
+%% ======================================================================
+
+The six second-order terms $T_k$ from \eqref{eq:Sf-decomp} sum to a
+departure score
+\begin{equation}\label{eq:S-sum}
+  S = \sum_{k=1}^{6} T_k
+  = \avg{r^2} + \avg{\upsilon^2} + 4\avg{r\upsilon}
+    - \tfrac{8}{3}\bigl(\avg{r\eta} + \avg{\upsilon\eta}\bigr)
+    + \tfrac{14}{9}\avg{\eta^2}
+\end{equation}
+that controls how far the effect ratio departs from unity.
+When $S$ varies across patch lengthscales ($L_V$), the following
+methods identify which terms drive that variation.
+
+\subsection{Covariance-Based Variance Attribution}
+
+The key question is: \emph{when we vary the vegetation lengthscale
+$L_V$ across simulations, which of the six terms $T_k$ are
+responsible for the resulting spread in~$S$?}
+
+Since $S = \sum_k T_k$, a standard identity from probability theory
+gives an exact decomposition of variance:
+\begin{equation}\label{eq:var-decomp}
+  \operatorname{Var}(S)
+  = \sum_{k=1}^{6} \operatorname{Cov}(T_k,\, S)
+\end{equation}
+
+Dividing both sides by $\operatorname{Var}(S)$ yields the
+\emph{attribution fraction} for term~$k$:
+\begin{equation}\label{eq:attrib-frac}
+  \alpha_k
+  = \frac{\operatorname{Cov}(T_k,\, S)}{\operatorname{Var}(S)},
+  \qquad \sum_{k=1}^{6}\alpha_k = 1
+\end{equation}
+
+\paragraph{Interpretation of sign.}
+\begin{itemize}
+  \item $\alpha_k > 0$: term~$T_k$ co-varies with $S$ in the same
+    direction --- it \emph{drives} the cross-scale variability.
+    When $S$ is large, $T_k$ also tends to be large.
+  \item $\alpha_k < 0$: term~$T_k$ moves opposite to $S$ ---
+    it \emph{dampens} or partially offsets the other terms.
+  \item The fractions always sum to exactly~1 by construction,
+    regardless of sample size.
+\end{itemize}
+
+The cross-terms with negative coefficients in $S$ (namely
+$-\frac{8}{3}\avg{r\eta}$ and $-\frac{8}{3}\avg{\upsilon\eta}$)
+are the most likely candidates for negative $\alpha_k$, since their
+weighted products naturally tend to oppose the sum.  The pure variance
+terms ($\avg{r^2}$, $\avg{\eta^2}$) tend to stay positive because
+variances are non-negative and generally increase with~$L_V$.
+
+\paragraph{Grouping.}
+The covariance in \eqref{eq:var-decomp} is computed across the
+set of simulations that differ in~$L_V$ within a fixed group.
+Two grouping strategies are used:
+\begin{enumerate}
+  \item \textbf{By anisotropy:} gradient-aligned, isotropic, and
+    contour-aligned, with $f_V$ and storm forcing pooled within each group.
+  \item \textbf{By vegetation fraction:} $f_V$ is binned into three
+    equal-frequency classes (via quantile binning) to ensure sufficient
+    sample sizes.  Anisotropy and storm forcing are pooled within
+    each bin.
+\end{enumerate}
+
+\paragraph{Stability considerations.}
+When the number of simulations per group is small ($n \lesssim 5$),
+the covariance estimates can be noisy and individual $\alpha_k$ values
+may exhibit spurious sign flips --- particularly for the cross-terms
+whose true values are close to zero.  Pooling across all converged
+storms (rather than conditioning on a single storm event) and binning
+$f_V$ into terciles rather than using raw levels substantially
+improves stability.
+
+\subsection{Slope Decomposition (Fixed-Effect Regression)}
+
+While the covariance attribution answers ``what fraction of spread
+is due to each term?'', the slope decomposition asks a more direct
+question: \emph{how much does each $T_k$ change per unit increase
+in~$L_V$?}
+
+Fit each term with an OLS model that includes $L_V$ as the
+predictor of interest and dummy variables to absorb group-level
+variation:
+\begin{equation}\label{eq:slope-decomp}
+  T_k = \beta_{0,k} + \beta_{L,k}\, L_V
+        + \sum_j \gamma_{j,k}\,\mathbb{1}_{f_V=j}
+        + \sum_m \delta_{m,k}\,\mathbb{1}_{\text{storm}=m}
+        + \varepsilon_k
+\end{equation}
+where $\mathbb{1}_{f_V=j}$ are vegetation-fraction fixed effects,
+$\mathbb{1}_{\text{storm}=m}$ are storm-forcing fixed effects
+(encoding each $p \times t_r$ combination), and $\beta_{L,k}$ is
+the marginal effect of lengthscale on term~$k$, holding all
+else constant.
+
+The slopes decompose the total sensitivity of $S$ to patch scale:
+\begin{equation}\label{eq:slope-sum}
+  \frac{\partial S}{\partial L_V}
+  = \sum_{k=1}^{6} \beta_{L,k}
+\end{equation}
+Terms with large $|\beta_{L,k}|$ are the primary drivers of the
+scale dependence of~$S$.  Standard errors from OLS provide
+confidence intervals that are unavailable from the model-free
+covariance attribution.
+
+When the regression is run separately per group (e.g.\ per
+anisotropy level or per $f_V$ bin), the fixed effects absorb only
+the remaining nuisance variables --- for instance, when grouping by
+anisotropy, the design matrix includes $f_V$ and storm fixed effects
+but not anisotropy dummies.
+
+\subsection{Summary: Two Complementary Views}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Analysis & Question & Method \\
+\midrule
+Covariance attribution
+  & Which terms explain the \emph{spread} in $S$?
+  & Variance identity (exact, model-free) \\
+Slope decomposition
+  & How much does each term change per metre of $L_V$?
+  & OLS regression (gives standard errors) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\end{document}

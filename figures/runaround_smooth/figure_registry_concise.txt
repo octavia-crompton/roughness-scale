@@ -1,4 +1,4 @@
-Figure Registry (concise)  •  2026-04-03 18:40
+Figure Registry (concise)  •  2026-05-28 14:18
 Source: notebooks/roughness_scale-decomp.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
@@ -11,14 +11,23 @@ Fig 2 — fig2_effect_ratio_fV_2x2.png
 Fig 3 — fig3_Sf_decomp_3x3.png
   $S_f$ decomposition figure (3×3): row 1 compares observed, $T_2$, and Lotter effect ratios vs $f_V$; rows 2–3 show the six dispersive-flux terms. Coloured by patch lengthscale $L_V$. Rows 2–3 share a y-axis so term magnitudes can be compared directly.
 
-Fig 4 — fig4_obs_vs_pred_re_6panel.png
-  Observed vs predicted r_e for six composite-roughness expressions, coloured by sigma. Lotter tracks the 1:1 line best (R²=0.97); Pavlovskii is weakest (R²=0.85).
+Fig 4 — fig4_Sf_decomp_3x3.png
+  $S_f$ decomposition figure (3×3): row 1 compares observed, $T_2$, and Lotter effect ratios vs $f_V$; rows 2–3 show the six dispersive-flux terms. Coloured by patch lengthscale $L_V$. Rows 2–3 share a y-axis so term magnitudes can be compared directly.
 
-Fig 5 — fig5_pred_vs_obs_CF.png
-  Predicted vs observed n_e/<n> for four CF methods, coloured by sigma. Leading term (CF) performs best (R²=0.56); 2nd-order $T_0$ (CF) is weakest (R²=0.13).
+Fig 5 — fig5_obs_vs_pred_re_norm_9panel.png
+  Normalised n_e/<n> vs n_c/<n> for nine composite-channel equations, coloured by sigma. Lotter best (R2=0.79); Yen $R^{1/6}$ weakest.
 
-SI1 — SI1_CF_errors_3panel.png
-  CF diagnostic coloured by tr: relative U and h errors vs CF values, plus h/U identity for correction factor.
+Fig 6 — fig6_pred_vs_obs_CF.png
+  Predicted vs observed n_e/<n> for six predictions (3 actual-covariance + 3 CF-based), coloured by sigma. Full 2nd-order: actual covariances performs best (R²=0.77); Full 2nd-order (CF) is weakest (R²=0.50).
 
-SI2 — SI2_effect_ratio_vs_sigma_grid.png
-  Effect ratio vs sigma at fV≈0.6, panelled by p×tr, coloured by veg type / anisotropy. Reveals how spatial heterogeneity (sigma) and storm forcing jointly control the effective-roughness enhancement.
+SI1 — SI1_obs_vs_pred_re_abs_9panel.png
+  Absolute r_e vs n_c for nine composite-channel equations, coloured by sigma. Lotter performs best (R2=0.98); Colebatch weakest.
+
+SI2 — SI2_channel_eqs_bias_hist.png
+  Per-method relative bias histograms for composite-channel equations. Shows systematic over/under-prediction tendencies.
+
+SI3 — SI3_effect_ratio_vs_LV_by_fV.png
+  $n_e/\langle n\rangle$ vs $L_V$ faceted by $f_V$, coloured by anisotropy orientation. Shows patch-scale dependence of the roughness ratio across vegetation fractions.
+
+SI4 — SI4_effect_ratio_vs_LB_by_fV.png
+  $n_e/\langle n\rangle$ vs $L_B$ faceted by $f_V$, coloured by anisotropy orientation. Shows bare-soil patch-scale dependence of the roughness ratio across vegetation fractions.
