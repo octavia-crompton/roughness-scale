@@ -190,10 +190,10 @@ VEG_LABELS = {
 }
 
 # ── Global font sizes ─────────────────────────────────────────────────────────
-FS_LABEL = 12   # axis label fontsize
-FS_TITLE = 13   # subplot title fontsize
-FS_TICK  = 12   # tick-label fontsize
-FS_LEG   = 12   # legend text fontsize
+FS_LABEL = 14   # axis label fontsize
+FS_TITLE = 14   # subplot title fontsize
+FS_TICK  = 14   # tick-label fontsize
+FS_LEG   = 14   # legend text fontsize
 
 # ── Per-variable canonical colour maps ────────────────────────────────────────
 # Use these whenever colouring by a simulation parameter so plots are consistent.

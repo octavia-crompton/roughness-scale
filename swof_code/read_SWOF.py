@@ -1197,6 +1197,60 @@ def get_flowlength(veg):
 
 def add_lengthscales(summary):
     """
+    Compute vegetation/bare-soil pattern length scales for each simulation.
+
+    For each row in ``summary`` the function inspects ``sim.veg`` (a 2-D
+    binary array, 1 = vegetated cell, 0 = bare cell; rows are across-slope,
+    columns run upslope) and records the following fields:
+
+    Vegetation patches (along-slope):
+        fV          : vegetated area fraction (mean of sim.veg).
+        patch_LV    : 2-D array, along-slope length of the veg patch each
+                      cell belongs to (in grid cells).
+        LV_dist     : 1-D distribution of veg-patch lengths, one entry per
+                      patch (unweighted -- each patch counted once).
+        LV          : mean veg-patch length (mean of LV_dist).
+
+    Upslope bare gap (paired with each veg patch):
+        upslope_B   : 2-D array, distance from each veg patch to the next
+                      upslope veg cell (length of the bare gap upslope).
+        uB_dist     : unweighted distribution of upslope bare-gap lengths.
+        uB          : mean upslope bare-gap length.
+
+    Vegetation patches (across-slope width):
+        patch_WV    : 2-D array, across-slope width of the veg patch each
+                      cell belongs to (computed on transposed sim.veg).
+        WV_dist     : unweighted distribution of veg-patch widths.
+        WV_avg      : mean veg-patch width.
+
+    Bare-soil patches (along-slope):
+        patch_LB    : 2-D array, along-slope length of the bare patch each
+                      cell belongs to.
+        upslope_V   : 2-D array, distance from each bare patch to the next
+                      upslope bare cell (bare-to-bare upslope gap).
+        L_dc_dist   : along-slope bare-patch length at the downslope outlet
+                      (last column of patch_LB) -- the "drainage-channel"
+                      length seen at the boundary.
+        L_dc        : mean of L_dc_dist (includes zeros where outlet is veg).
+        L_dc>0      : mean L_dc over outlet cells that are actually bare.
+        LB_w        : mean bare-patch length, weighted by patch area
+                      (excludes zero cells -- i.e., averaged over bare cells).
+        LB_wv       : mean bare-patch length over the full domain (zeros
+                      from vegetated cells included).
+        LB_dist     : unweighted distribution of bare-patch lengths.
+        LB          : mean bare-patch length (mean of LB_dist; one entry
+                      per patch).
+
+    Transition / edge metrics:
+        bare_to_veg : fraction of along-slope neighbour pairs that step
+                      from bare (j) to vegetated (j+1).
+        veg_to_bare : fraction of along-slope neighbour pairs that step
+                      from vegetated (j) to bare (j+1).
+        edge        : fraction of vegetated cells that lie on a
+                      transverse (across-slope) veg/bare edge, computed
+                      as (veg - erode(veg, 1x3 kernel)) / sum(veg).
+                      Proxy for the cross-slope perimeter available for
+                      lateral flow exchange.
     """
     import cv2
     for fld in ['patch_LV', 'LV_dist', 'upslope_B', 'upslope_V', 'uB_dist',
@@ -1207,60 +1261,78 @@ def add_lengthscales(summary):
     for key in summary.index:
         
         sim = summary.loc[key]
-        
+
+        # --- vegetated area fraction ---
         summary.at[key,"fV"] = sim.veg.mean()
 
-        patch_LV, upslope_B = get_patchL(sim.veg, 1000) 
-        
-        summary.at[key,"patch_LV"] = patch_LV # [patch_LV> 0].mean()
-        
+        # --- along-slope veg patches + upslope bare gap paired to each ---
+        # patch_LV[i,j]  = along-slope length (cells) of veg patch at (i,j)
+        # upslope_B[i,j] = distance to next upslope veg cell from (i,j)
+        patch_LV, upslope_B = get_patchL(sim.veg, 1000)
+
+        summary.at[key,"patch_LV"] = patch_LV  # full 2-D field
+
+        # LV_dist: one entry per veg patch (unweighted); LV: mean patch length
         summary.at[key,"LV_dist"] =  unweight_array(patch_LV)
-        summary.at[key,"LV"] =  np.mean(summary.at[key,"LV_dist"])    
-                
+        summary.at[key,"LV"] =  np.mean(summary.at[key,"LV_dist"])
+
+        # uB_dist: one entry per upslope-gap segment; uB: mean upslope gap
         summary.at[key,"upslope_B"] = upslope_B
         uB = unweight_array(upslope_B)
         summary.at[key,"uB_dist"] = uB
         summary.at[key,"uB"] = np.mean(uB)
- 
-        patch_WV, patch_right_B = get_patchL(sim.veg.T, 1000) 
+
+        # --- across-slope veg patch widths (transpose so cols run across) ---
+        # patch_WV[i,j]  = across-slope width of veg patch at (i,j)
+        # patch_right_B  = right-side bare-gap pair (not stored)
+        patch_WV, patch_right_B = get_patchL(sim.veg.T, 1000)
         summary.at[key,"patch_WV"] = patch_WV
-        WV = unweight_array(patch_WV) 
-        summary.at[key,"WV_dist"] = WV
-        summary.at[key,"WV_avg"] = np.mean(WV)       
-        
-        patch_LB, upslope_V = get_patchL(1-sim.veg, 1000)   
+        WV = unweight_array(patch_WV)
+        summary.at[key,"WV_dist"] = WV         # one entry per patch
+        summary.at[key,"WV_avg"] = np.mean(WV) # mean veg-patch width
+
+        # --- along-slope bare-soil patches (invert veg) ---
+        # patch_LB[i,j]  = along-slope length of bare patch at (i,j)
+        # upslope_V[i,j] = distance from bare patch to next upslope bare cell
+        patch_LB, upslope_V = get_patchL(1-sim.veg, 1000)
+
+        # L_dc: bare-patch length at the downslope outlet (last column).
+        # Cells where the outlet is vegetated contribute 0.
         L_dc = patch_LB[:, -1]
         summary.at[key,"L_dc_dist"] =  L_dc
-        summary.at[key,"L_dc"] = L_dc.mean()     
-        summary.at[key,"L_dc>0"] = L_dc[L_dc>0].mean()     
+        summary.at[key,"L_dc"] = L_dc.mean()             # incl. zeros
+        summary.at[key,"L_dc>0"] = L_dc[L_dc>0].mean()   # excl. zeros
         summary.at[key,"patch_LB"] = patch_LB
         summary.at[key,"upslope_V"] = upslope_V
 
-        # bare soil length, including 0s
-        summary.at[key,"LB_w"] = patch_LB[patch_LB>0].mean() # weighted 
-        summary.at[key,"LB_wv"] = patch_LB.mean() # weighted with vegetation
-        
-        # bare soil length, unweighted
-        LB = unweight_array(patch_LB) 
+        # Bare-patch length averages weighted by cell coverage:
+        #   LB_w  : averaged over bare cells only (exclude vegetated zeros)
+        #   LB_wv : averaged over the full domain (vegetated cells = 0)
+        summary.at[key,"LB_w"] = patch_LB[patch_LB>0].mean()
+        summary.at[key,"LB_wv"] = patch_LB.mean()
+
+        # LB_dist: one entry per bare patch (unweighted); LB: mean patch length
+        LB = unweight_array(patch_LB)
         summary.at[key,"LB_dist"] = LB
-        summary.at[key,"LB"] = np.mean(LB) # unweighted
-        
-        # along slope fraction that is transition from bare soil to vegetated
+        summary.at[key,"LB"] = np.mean(LB)
+
+        # --- along-slope veg/bare transitions ---
+        # diff(veg) along slope: -1 at a bare→veg step, +1 at a veg→bare step.
+        # bare_to_veg : fraction of along-slope pairs that step from bare to veg
         bare_to_veg = (np.diff(sim.veg, 1) == -1)
         summary.at[key, "bare_to_veg"] = bare_to_veg.mean()
-        
-        # # along slope fraction that is transition from vegetated to bare soil
-        # (np.diff(sim.veg, 1) == 1).mean()
-        veg_to_bare = (np.diff(sim.veg, 1) == 1)  
+
+        # veg_to_bare : fraction of along-slope pairs that step from veg to bare
+        veg_to_bare = (np.diff(sim.veg, 1) == 1)
         summary.at[key,"veg_to_bare"] = veg_to_bare.mean()
 
-        # # fraction of hillslope available for lateral/transverse flow
-        # (np.diff(sim.veg, 1) != 1).mean()
-
-
-        edge = (sim.veg - cv2.erode(sim.veg, np.ones([1,3]), 1)) 
+        # --- transverse (across-slope) veg edge ---
+        # 1x3 erosion peels off the across-slope boundary of veg patches;
+        # edge = perimeter cells on across-slope edges of veg, normalised
+        # by total vegetated area. Proxy for lateral exchange perimeter.
+        edge = (sim.veg - cv2.erode(sim.veg, np.ones([1,3]), 1))
         summary.at[key,'edge'] =  edge.sum()/sim.veg.sum()
-    
+
 
     return summary
 
