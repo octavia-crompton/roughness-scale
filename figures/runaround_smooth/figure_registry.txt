@@ -1,5 +1,5 @@
-Figure registry  •  created 2026-05-29 13:47
-Source notebook  :  notebooks/roughness_scale-pattern.ipynb
+Figure registry  •  created 2026-05-29 14:36
+Source notebook  :  notebooks/roughness_scale-decomp.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
@@ -32,11 +32,11 @@ Saved in : ../figures/runaround_smooth
 
 ### fig4 ###
 File     : fig4_Sf_decomp_3x3.png
-Updated  : 2026-05-29 13:46
+Updated  : 2026-05-29 14:36
 Notebook : notebooks/roughness_scale-decomp.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
-3×3 panel figure showing the $S_f$ spatial decomposition at fixed storm ($p=8$ mm/hr, $t_r=60$ min, anisotropic patterns only). Row 1: observed $n_e/\langle n\rangle$, second-order prediction ($T_2$), and Lotter prediction vs $f_V$, coloured by patch lengthscale $L_V$. Rows 2–3: the six second-order fluctuation terms ($\langle r^2\rangle$, $\langle\upsilon^2\rangle$, $4\langle r\upsilon\rangle$, $-\frac{8}{3}\langle r\eta\rangle$, $-\frac{8}{3}\langle\eta\upsilon\rangle$, $\frac{14}{9}\langle\eta^2\rangle$) vs $f_V$. Top row and bottom block have independent suptitles and a vertical separator; math expressions are placed on y-axes (not titles) so they read as variables rather than panel headings.
+3×3 panel figure showing the $S_f$ spatial decomposition at fixed storm ($p=8$ cm/hr, $t_r=60$ min, anisotropic patterns only). Row 1: observed $n_e/\langle n\rangle$, second-order prediction ($T_2$), and Lotter prediction vs $f_V$, coloured by patch lengthscale $L_V$. Rows 2–3: the six second-order fluctuation terms ($\langle r^2\rangle$, $\langle\upsilon^2\rangle$, $4\langle r\upsilon\rangle$, $-\frac{8}{3}\langle r\eta\rangle$, $-\frac{8}{3}\langle\eta\upsilon\rangle$, $\frac{14}{9}\langle\eta^2\rangle$) vs $f_V$. Top row and bottom block have independent suptitles and a vertical separator; math expressions are placed on y-axes (not titles) so they read as variables rather than panel headings.
 ### end fig4 ###
 
 ### fig5 ###
