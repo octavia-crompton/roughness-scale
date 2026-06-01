@@ -17,7 +17,7 @@ Usage (in a notebook)
 # `updates`: overrides/extensions for the legacy `names` dict (from plot_SWOF).
 # Used by format_name().
 updates = {
-    "effect_ratio" : "r_e/r_{avg}",
+    "effect_ratio" : r"n_e/\langle n \rangle",
     'Delta_I_v'    : '\\Delta IF_V',
     'Ks_v'         : 'K_s',
     'K_avg'        : ' K_{avg}',
@@ -51,8 +51,11 @@ rename = {
     "effect"             : r"$r_{\mathrm{avg}} - r_e$",
     "effect_ratio"       : r"$n_e/\langle n \rangle$",
     "effect_ratio_U"     : r"$n_e^U/\langle n \rangle$",
-    "effect_ratio_Q"     : r"$n_e^Q/\langle n \rangle$",
-    "effect_ratio_hydro" : r"$n_e^{\mathrm{hydro}}/\langle n \rangle$",
+    "effect_ratio_Q"     : r"$n_e^{Q}/\langle n \rangle$",
+    "effect_ratio_hydro" : r"$n_e/\langle n \rangle$",
+    "effect_ratio_vol"   : r"$n_e^{\mathrm{vol}}/\langle n \rangle$",
+    "effect_ratio_Sf"    : r"$n_e^{S_f}/\langle n \rangle$",
+    "effect_ratio_T2"    : r"$n_e^{B}/\langle n \rangle$",
     "effect_ratio_geom"  : r"$r_e/r_{\mathrm{geom}}$",
     "r_equiv"            : r"$r_e$",
     "r_equiv5"           : r"$r_e$",
@@ -62,20 +65,23 @@ rename = {
     "r_ratio"            : r"$r_b/r_v$",
     "alpha_b"            : r"$r_b$",
     "alpha_v"            : r"$r_v$",
-
+    "bare_to_veg" : r"$f_{b\rightarrow v}$",   # fraction of along-slope pairs stepping bare → veg
+    "veg_to_bare" : r"$f_{v\rightarrow b}$",   # fraction of along-slope pairs stepping veg → bare
+    "WV_avg"      : r"$W_V$",                  # mean across-slope veg-patch width (cells)
+    "uB"          : r"$L_{B,\mathrm{up}}$",    # mean upslope bare gap paired with each veg patch
     # ===== controls / meta =====
     "fV"                 : r"$f_V$",
     "sigma"              : r"$\sigma$",
     "aniso"              : "anisotropy",
     "tr"                 : r"$t_R$",
     "l"                  : r"$L$",
-    "LV"                 : r"$L_V$ (median vegetation patch length)",
-    "LB"                 : r"$L_B$ (median bare-soil patch length)",
+    "LV"                 : r"$L_V$",
+    "LB"                 : r"$L_B$",
     "seed"               : "seed",
     "radius"             : r"$r$",
     "Re"                 : r"$Re$",
     "Re_all"             : r"$Re$",
-
+     "edge" : r"$P_V^{\perp}/A_V$",   # transverse veg edge per unit veg area
     # ===== hydraulics, means =====
     "<U>"                : r"$\langle U\rangle$",
     "<h>"                : r"$\langle h\rangle$",
@@ -102,6 +108,7 @@ rename = {
     "<Up dUp/dx>"        : r"$\langle U'\,\partial_x U'\rangle$",
     "<dh/dx>"            : r"$\langle \partial_x h\rangle$",
     "<dhp/dx>"           : r"$\langle \partial_x h'\rangle$",
+
 
     # ===== variances & covariances =====
     "<Up2>"              : r"$\langle U'^2\rangle$",

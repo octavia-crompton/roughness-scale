@@ -1,11 +1,11 @@
-Figure registry  •  created 2026-05-29 14:36
+Figure registry  •  created 2026-06-01 09:14
 Source notebook  :  notebooks/roughness_scale-decomp.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
 ### fig1 ###
 File     : fig1_conceptual_sketch.png
-Updated  : 2026-03-31 17:36
+Updated  : 2026-06-01 09:11
 Notebook : notebooks/roughness_scale-compute.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -32,56 +32,29 @@ Saved in : ../figures/runaround_smooth
 
 ### fig4 ###
 File     : fig4_Sf_decomp_3x3.png
-Updated  : 2026-05-29 14:36
+Updated  : 2026-06-01 09:14
 Notebook : notebooks/roughness_scale-decomp.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
-3×3 panel figure showing the $S_f$ spatial decomposition at fixed storm ($p=8$ cm/hr, $t_r=60$ min, anisotropic patterns only). Row 1: observed $n_e/\langle n\rangle$, second-order prediction ($T_2$), and Lotter prediction vs $f_V$, coloured by patch lengthscale $L_V$. Rows 2–3: the six second-order fluctuation terms ($\langle r^2\rangle$, $\langle\upsilon^2\rangle$, $4\langle r\upsilon\rangle$, $-\frac{8}{3}\langle r\eta\rangle$, $-\frac{8}{3}\langle\eta\upsilon\rangle$, $\frac{14}{9}\langle\eta^2\rangle$) vs $f_V$. Top row and bottom block have independent suptitles and a vertical separator; math expressions are placed on y-axes (not titles) so they read as variables rather than panel headings.
+3×3 panel figure showing the $S_f$ spatial decomposition at fixed storm ($p=8$ cm/hr, $t_r=60$ min, anisotropic patterns only). Row 1: observed $n_e/\langle n\rangle$, storage $n_e^{\mathrm{vol}}/\langle n\rangle$, and friction-slope expansion $n_e^{S_f}/\langle n\rangle$ vs $f_V$, coloured by patch lengthscale $L_V$. Rows 2–3: the six second-order fluctuation terms ($\langle r^2\rangle$, $\langle\upsilon^2\rangle$, $4\langle r\upsilon\rangle$, $-\frac{8}{3}\langle r\eta\rangle$, $-\frac{8}{3}\langle\eta\upsilon\rangle$, $\frac{14}{9}\langle\eta^2\rangle$) vs $f_V$. Top row and bottom block have independent suptitles and a vertical separator; math expressions are placed on y-axes (not titles) so they read as variables rather than panel headings.
 ### end fig4 ###
 
 ### fig5 ###
-File     : fig5_obs_vs_pred_re_norm_9panel.png
-Updated  : 2026-04-06 17:01
-Notebook : notebooks/roughness_scale-cf-channel_eqs.ipynb
+File     : fig5_pred_vs_obs_4panel.png
+Updated  : 2026-06-01 09:14
+Notebook : notebooks/roughness_scale-decomp.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
-Normalised comparison: simulated n_e/<n> vs predicted n_c/<n> for nine composite-channel equations (Lotter, Pavlovskii, Horton-Einstein, Cox, Krishnamurthy-Christensen, Colebatch, Yen R^1/6, Yen R^1/3, Felkel).
-Coloured by sigma.
-
-Per-method performance (sorted by R2):
-  - Lotter: R2=0.79, RMSE=0.0527
-  - Felkel: R2=0.72, RMSE=0.0665
-  - Horton-Einstein: R2=0.37, RMSE=0.3143
-  - Krishnamurthy-Christensen: R2=0.26, RMSE=0.1937
-  - Pavlovskii: R2=0.25, RMSE=0.3880
-  - Colebatch: R2=0.24, RMSE=0.3815
-  - Yen $R^{1/3}$: R2=0.10, RMSE=0.2343
-  - Yen $R^{1/6}$: R2=0.04, RMSE=0.2569
-
-Best: Lotter (R2=0.79); Worst: Yen $R^{1/6}$ (R2=0.04).
+Predicted vs observed hydrograph-calibrated $n_e/\langle n\rangle$ for four analytical predictions, arranged 2×2: (a) equal-storage $n_e^{\mathrm{vol}}$ (matches mean depth), (b) equal-discharge $n_e^{Q}$ (Lotter / composite-channel equivalent), (c) $S_f$-expansion bracket only $n_e^{B}$ (second-order dispersive bracket $B$, no mean-state correction), and (d) $S_f$-expansion corrected $n_e^{S_f}$ (bracket times $\langle U\rangle^2/\langle U_e\rangle^2 \cdot \langle h_e\rangle^{4/3}/\langle h\rangle^{4/3}$). Each panel shows the 1:1 line (grey dashed), Pearson $r$, and RMSE. (d) is the most accurate; (a) and (b) systematically overpredict; (c) and (d) differ by the mean-state correction factor.
 ### end fig5 ###
 
 ### fig6 ###
-File     : fig6_pred_vs_obs_CF.png
-Updated  : 2026-04-06 16:47
-Notebook : notebooks/roughness_scale-cf-channel_eqs.ipynb
+File     : fig6_obs_vs_pred_powerlaw_rf.png
+Updated  : 2026-05-31 08:52
+Notebook : notebooks/5. roughness_scale-predict.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
-Predicted vs observed n_e/<n> — 2x3 grid.
-Top row: simulation-derived fields (slope-integrated leading term, T0 actual, full 2nd-order actual).
-Bottom row: CF approximation (leading term, T0 exact CF, full 2nd-order exact CF).
-Markers coloured by sigma (highest |r| with leading-term residual).
-RMSE/R² annotated per panel.
-
-Per-method performance:
-  - Leading term (slope-integrated): R²=0.66, RMSE=0.135
-  - $T_0$: actual covariances: R²=0.70, RMSE=0.134
-  - Full 2nd-order: actual covariances: R²=0.77, RMSE=0.125
-  - Leading term (CF): R²=0.73, RMSE=0.101
-  - $T_0$: $r, \upsilon$ terms (CF): R²=0.64, RMSE=0.143
-  - Full 2nd-order (CF): R²=0.50, RMSE=0.116
-
-Residuals correlate most with sigma; dominant errors occur at extreme sigma values.
+Predicted vs observed effective-roughness ratio $n_e/\langle n\rangle$ (ratio of equivalent Manning's $n$ to the spatial mean) under three predictive models built from vegetation-pattern descriptors. Restricted to runs with hydrograph error < 5% and positive predictors (n = 1086). Predictors are drawn from the top-8 Random Forest permutation-importance ranking. Panel (a): power-law OLS in log space using only the top-3 RF predictors (bare_to_veg, veg_to_bare, WV_avg); adj R² = 0.704. Panel (b): best-subset power law (largest adj R² across all subsets of the top-8); selected k = 6: veg_to_bare, WV_avg, uB, edge, fV, LV; adj R² = 0.892. Panel (c): Random Forest regressor with recursive feature elimination and 5-fold cross-validation (RFECV); selected k = 8: bare_to_veg, veg_to_bare, WV_avg, uB, edge, fV, LV, L_dc; 5-fold CV R² = 0.970 ± 0.006. Variables: bare_to_veg = fraction of pixel transitions from bare to vegetated along flow; veg_to_bare = fraction of vegetated→bare transitions; WV_avg = mean width of vegetated patches (m); uB = mean bare-patch flow speed (m/s); edge = total bare/vegetation edge density; fV = vegetation fraction; LV = mean vegetated-patch length along flow (m); L_dc = downslope-connected bare-flow length (m). Marker colour encodes the model (green / blue / red) and carries no data meaning; the 1:1 line is shown in black.
 ### end fig6 ###
 
 ### SI1 ###
@@ -126,10 +99,10 @@ Saved in : ../figures/runaround_smooth
 ### end SI3 ###
 
 ### SI4 ###
-File     : SI4_effect_ratio_vs_LB_by_fV.png
-Updated  : 2026-05-29 12:21
-Notebook : notebooks/roughness_scale-pattern.ipynb
+File     : SI4_decomp_terms_vs_obs.png
+Updated  : 2026-06-01 09:14
+Notebook : notebooks/roughness_scale-decomp.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
-2×3 panel scatter of $n_e/\langle n\rangle$ vs bare-soil patch lengthscale $L_B$, one panel per $f_V$ value (excluding 0.05). Points coloured and shaped by anisotropy orientation (gradient-aligned, isotropic, contour-aligned) with horizontal jitter to separate overlapping categories. Shows how the effective roughness ratio varies with bare-soil patch scale across vegetation fractions.
+Six second-order $S_f$ decomposition terms ($\langle r^2\rangle$, $\langle\upsilon^2\rangle$, $4\langle r\upsilon\rangle$, $-\tfrac{8}{3}\langle r\eta\rangle$, $-\tfrac{8}{3}\langle\eta\upsilon\rangle$, $\tfrac{14}{9}\langle\eta^2\rangle$) plotted against the observed hydrograph-calibrated $n_e/\langle n\rangle$. Same anisotropic $p=5$ cm/hr, $t_R=60$ min subset as Fig 4. Markers coloured by patch lengthscale $L_V$. Pearson $r$ shown for each term. Demonstrates which fluctuation covariances individually correlate most strongly with the observed effect ratio.
 ### end SI4 ###

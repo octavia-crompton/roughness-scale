@@ -1,6 +1,6 @@
 # Roughness-Scale Project — AI Agent Instructions
 
-> **Last updated:** 2026-03-02
+> **Last updated:** 2026-05-30
 > Read this file at the start of every new chat session.
 > Update this file when new conventions, preferences, or project structure changes are established in chat.
 
@@ -28,10 +28,11 @@ roughness-scale/
 │   └── figure_registry.py             ← SHARED figure registry helpers (see §3b)
 ├── notebooks/
 │   ├── roughness_scale-analysis.ipynb ← original combined notebook (source for split; kept as reference)
-│   ├── roughness_scale-pattern.ipynb  ← spatial pattern & storm characteristics (figs 1-3)
-│   ├── roughness_scale-cf.ipynb       ← correction factor & composite channel equations (Lotter, Cox, etc.)
-│   ├── roughness_scale-decomp.ipynb   ← spatial decomposition & prediction methods (T0/T1/T2, OLS, ML)
-│   ├── roughness_scale-compute.ipynb  ← data processing & derived columns
+│   ├── 1. roughness_scale-compute.ipynb ← data processing & derived columns
+│   ├── 2. roughness_scale-pattern.ipynb ← spatial pattern & storm characteristics (figs 1-3)
+│   ├── 3. roughness_scale-decomp.ipynb  ← T0/T1/T2 variance decomposition, hybrid predictions, decomposition-term ML/sensitivity
+│   ├── 4. roughness_scale-cf-channel_eqs.ipynb ← correction factor & composite channel equations (Lotter, Cox, etc.)
+│   ├── 5. roughness_scale-predict.ipynb ← predicting $n_e/\langle n\rangle$: OLS on variance components, feature selection, $\langle S_f\rangle$ power-law, tracer visuals (split from decomp on 2026-05-30)
 │   └── archive/                       ← old/dated notebooks
 ├── figures/
 │   └── <batch_case>/                  ← e.g. runaround_smooth/
@@ -59,10 +60,11 @@ roughness-scale/
 
 | Notebook | Purpose |
 |---|---|
-| `roughness_scale-pattern.ipynb` | Scatter/grid plots of σ, fV, anisotropy + storm characteristics vs $n_e/\langle n \rangle$ |
-| `roughness_scale-cf.ipynb` | Correction factor, equivalent-roughness formulas (Lotter, Cox, Horton–Einstein, Felkel), and composite-channel comparisons |
-| `roughness_scale-decomp.ipynb` | T0/T1/T2 variance decomposition of $n_e/\langle n \rangle$, OLS/ML regression models, hybrid predictions, pattern–forcing interactions |
-| `roughness_scale-compute.ipynb` | Load raw SWOF output, compute `effect_ratio`, write `summary_slim.pkl` |
+| `1. roughness_scale-compute.ipynb` | Load raw SWOF output, compute `effect_ratio`, write `summary_slim.pkl` |
+| `2. roughness_scale-pattern.ipynb` | Scatter/grid plots of σ, fV, anisotropy + storm characteristics vs $n_e/\langle n \rangle$ |
+| `3. roughness_scale-decomp.ipynb` | T0/T1/T2 variance decomposition of $n_e/\langle n \rangle$, hybrid predictions, decomposition-term predictors (Ridge/RF), sensitivity OLS |
+| `4. roughness_scale-cf-channel_eqs.ipynb` | Correction factor, equivalent-roughness formulas (Lotter, Cox, Horton–Einstein, Felkel), and composite-channel comparisons |
+| `5. roughness_scale-predict.ipynb` | Predicting $n_e/\langle n \rangle$: OLS on second-order variance components, feature selection (Pearson, MI, RF importance), $\langle S_f\rangle$ power-law fit, tracer-flow visual diagnostics, predicted-vs-observed fits |
 
 ### Imports & sys.path
 

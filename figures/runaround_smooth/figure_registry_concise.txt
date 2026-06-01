@@ -1,4 +1,4 @@
-Figure Registry (concise)  •  2026-05-29 14:36
+Figure Registry (concise)  •  2026-06-01 09:14
 Source: notebooks/roughness_scale-decomp.ipynb  |  Figures: /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ========================================================================
 
@@ -12,13 +12,13 @@ Fig 3 — fig3_effect_ratio_vs_LV.png
   Effect ratio vs patch lengthscale $L_V$, panelled by $f_V$, coloured by orientation. Ratio increases with patch size toward unity; orientation sensitivity peaks near $f_V \approx 0.5$.
 
 Fig 4 — fig4_Sf_decomp_3x3.png
-  $S_f$ decomposition figure (3×3): row 1 compares observed, $T_2$, and Lotter effect ratios vs $f_V$; rows 2–3 show the six dispersive-flux terms. Coloured by patch lengthscale $L_V$. Math expressions appear as y-axis labels, with separate suptitles for the two blocks.
+  $S_f$ decomposition figure (3×3): row 1 compares observed $n_e/\langle n\rangle$, storage $n_e^{\mathrm{vol}}/\langle n\rangle$, and friction-slope expansion $n_e^{S_f}/\langle n\rangle$ vs $f_V$; rows 2–3 show the six dispersive-flux terms. Coloured by patch lengthscale $L_V$. Math expressions appear as y-axis labels, with separate suptitles for the two blocks.
 
-Fig 5 — fig5_obs_vs_pred_re_norm_9panel.png
-  Normalised n_e/<n> vs n_c/<n> for nine composite-channel equations, coloured by sigma. Lotter best (R2=0.79); Yen $R^{1/6}$ weakest.
+Fig 5 — fig5_pred_vs_obs_4panel.png
+  Predicted vs observed $n_e/\langle n\rangle$ for four predictions: (a) equal-storage, (b) equal-discharge, (c) $S_f$-bracket only, (d) $S_f$-corrected. The corrected $S_f$ expansion (d) is the most accurate; bracket-only (c) underestimates.
 
-Fig 6 — fig6_pred_vs_obs_CF.png
-  Predicted vs observed n_e/<n> for six predictions (3 actual-covariance + 3 CF-based), coloured by sigma. Full 2nd-order: actual covariances performs best (R²=0.77); Full 2nd-order (CF) is weakest (R²=0.50).
+Fig 6 — fig6_obs_vs_pred_powerlaw_rf.png
+  Predicted vs observed $n_e/\langle n\rangle$ from (a) a top-3 RF-feature power law, (b) the best-subset power law, and (c) a Random Forest with RFECV (hydrograph error < 5%). The best-subset power law captures most of the variance using interpretable exponents, while the RF further improves cross-validated R².
 
 SI1 — SI1_obs_vs_pred_re_abs_9panel.png
   Absolute r_e vs n_c for nine composite-channel equations, coloured by sigma. Lotter performs best (R2=0.98); Colebatch weakest.
@@ -29,5 +29,5 @@ SI2 — SI2_channel_eqs_bias_hist.png
 SI3 — SI3_effect_ratio_vs_LV_by_fV.png
   $n_e/\langle n\rangle$ vs $L_V$ faceted by $f_V$, coloured by anisotropy orientation. Shows patch-scale dependence of the roughness ratio across vegetation fractions.
 
-SI4 — SI4_effect_ratio_vs_LB_by_fV.png
-  $n_e/\langle n\rangle$ vs $L_B$ faceted by $f_V$, coloured by anisotropy orientation. Shows bare-soil patch-scale dependence of the roughness ratio across vegetation fractions.
+SI4 — SI4_decomp_terms_vs_obs.png
+  Six $S_f$ decomposition terms vs observed $n_e/\langle n\rangle$, coloured by $L_V$. Identifies which covariance terms correlate most strongly with the observed effect ratio.
