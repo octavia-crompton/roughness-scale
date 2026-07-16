@@ -1,11 +1,11 @@
-Figure registry  •  created 2026-06-01 09:14
-Source notebook  :  notebooks/roughness_scale-decomp.ipynb
+Figure registry  •  created 2026-06-11 11:18
+Source notebook  :  notebooks/roughness_scale-compute.ipynb
 Figures saved in :  /Users/octaviacrompton/Projects/roughness-scale/figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
 
 ### fig1 ###
 File     : fig1_conceptual_sketch.png
-Updated  : 2026-06-01 09:11
+Updated  : 2026-06-11 11:18
 Notebook : notebooks/roughness_scale-compute.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -31,17 +31,26 @@ Saved in : ../figures/runaround_smooth
 ### end fig3 ###
 
 ### fig4 ###
-File     : fig4_Sf_decomp_3x3.png
-Updated  : 2026-06-01 09:14
+File     : fig4_Sf_decomp_2x3.png
+Updated  : 2026-06-09 12:52
 Notebook : notebooks/roughness_scale-decomp.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
-3×3 panel figure showing the $S_f$ spatial decomposition at fixed storm ($p=8$ cm/hr, $t_r=60$ min, anisotropic patterns only). Row 1: observed $n_e/\langle n\rangle$, storage $n_e^{\mathrm{vol}}/\langle n\rangle$, and friction-slope expansion $n_e^{S_f}/\langle n\rangle$ vs $f_V$, coloured by patch lengthscale $L_V$. Rows 2–3: the six second-order fluctuation terms ($\langle r^2\rangle$, $\langle\upsilon^2\rangle$, $4\langle r\upsilon\rangle$, $-\frac{8}{3}\langle r\eta\rangle$, $-\frac{8}{3}\langle\eta\upsilon\rangle$, $\frac{14}{9}\langle\eta^2\rangle$) vs $f_V$. Top row and bottom block have independent suptitles and a vertical separator; math expressions are placed on y-axes (not titles) so they read as variables rather than panel headings.
+2×3 panel figure showing the six second-order $S_f$ decomposition terms at fixed storm ($p=5$ cm/hr, $t_r=60$ min, anisotropic patterns only) vs $f_V$, coloured by patch lengthscale $L_V$. Panels (a)–(f): $\langle r^2\rangle$, $\langle\upsilon^2\rangle$, $4\langle r\upsilon\rangle$, $-\frac{8}{3}\langle r\eta\rangle$, $-\frac{8}{3}\langle\eta\upsilon\rangle$, $\frac{14}{9}\langle\eta^2\rangle$. Math expressions are placed on y-axes (not titles) so they read as variables. Replaces the previous 3×3 Fig 4 (top predictions row removed).
 ### end fig4 ###
+
+### fig4a ###
+File     : fig4a_decomp_terms_vs_obs.png
+Updated  : 2026-06-09 12:49
+Notebook : notebooks/roughness_scale-decomp.ipynb
+Saved in : ../figures/runaround_smooth
+────────────────────────────────────────────────────────────────────────
+Six second-order $S_f$ decomposition terms ($\langle r^2\rangle$, $\langle\upsilon^2\rangle$, $4\langle r\upsilon\rangle$, $-\tfrac{8}{3}\langle r\eta\rangle$, $-\tfrac{8}{3}\langle\eta\upsilon\rangle$, $\tfrac{14}{9}\langle\eta^2\rangle$) plotted against the observed hydrograph-calibrated $n_e/\langle n\rangle$. Same anisotropic $p=5$ cm/hr, $t_R=60$ min subset as Fig 4. Panels (a)–(f) labelled top-left; markers coloured by patch lengthscale $L_V$. Pearson $R^2$ shown in each panel. Demonstrates which fluctuation covariances individually correlate most strongly with the observed effect ratio.
+### end fig4a ###
 
 ### fig5 ###
 File     : fig5_pred_vs_obs_4panel.png
-Updated  : 2026-06-01 09:14
+Updated  : 2026-06-09 12:49
 Notebook : notebooks/roughness_scale-decomp.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
@@ -49,12 +58,12 @@ Predicted vs observed hydrograph-calibrated $n_e/\langle n\rangle$ for four anal
 ### end fig5 ###
 
 ### fig6 ###
-File     : fig6_obs_vs_pred_powerlaw_rf.png
-Updated  : 2026-05-31 08:52
+File     : fig6_obs_vs_pred_powerlaw.png
+Updated  : 2026-06-03 06:37
 Notebook : notebooks/5. roughness_scale-predict.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────
-Predicted vs observed effective-roughness ratio $n_e/\langle n\rangle$ (ratio of equivalent Manning's $n$ to the spatial mean) under three predictive models built from vegetation-pattern descriptors. Restricted to runs with hydrograph error < 5% and positive predictors (n = 1086). Predictors are drawn from the top-8 Random Forest permutation-importance ranking. Panel (a): power-law OLS in log space using only the top-3 RF predictors (bare_to_veg, veg_to_bare, WV_avg); adj R² = 0.704. Panel (b): best-subset power law (largest adj R² across all subsets of the top-8); selected k = 6: veg_to_bare, WV_avg, uB, edge, fV, LV; adj R² = 0.892. Panel (c): Random Forest regressor with recursive feature elimination and 5-fold cross-validation (RFECV); selected k = 8: bare_to_veg, veg_to_bare, WV_avg, uB, edge, fV, LV, L_dc; 5-fold CV R² = 0.970 ± 0.006. Variables: bare_to_veg = fraction of pixel transitions from bare to vegetated along flow; veg_to_bare = fraction of vegetated→bare transitions; WV_avg = mean width of vegetated patches (m); uB = mean bare-patch flow speed (m/s); edge = total bare/vegetation edge density; fV = vegetation fraction; LV = mean vegetated-patch length along flow (m); L_dc = downslope-connected bare-flow length (m). Marker colour encodes the model (green / blue / red) and carries no data meaning; the 1:1 line is shown in black.
+Predicted vs observed effective-roughness ratio $n_e/\langle n\rangle$ (ratio of equivalent Manning's $n$ to the spatial mean) under two power-law OLS predictions built from vegetation-pattern descriptors. Restricted to runs with hydrograph error < 5% and positive predictors (n = 1214). Candidate predictors are the top-8 Random Forest permutation-importance features. Panel (a): single-feature power-law OLS in log space using bare_to_veg; adj R² = 0.624. Panel (b): best-subset power law (max adj R² across all subsets of the top-8, requiring every fitted exponent to satisfy |exponent| >= 0.05 and p < 0.05 to exclude near-zero or non-significant terms such as L_dc); selected k = 4: fV, WV_avg, LB, LV; adj R² = 0.856. Variables: bare_to_veg = fraction of pixel transitions from bare to vegetated along flow; veg_to_bare = fraction of vegetated→bare transitions; WV_avg = mean width of vegetated patches (m); uB = mean bare-patch flow speed (m/s); edge = total bare/vegetation edge density; fV = vegetation fraction; LV = mean vegetated-patch length along flow (m); L_dc = downslope-connected bare-flow length (m). Marker colour encodes the model (green / blue) and carries no data meaning; the 1:1 line is shown in black.
 ### end fig6 ###
 
 ### SI1 ###
@@ -100,7 +109,7 @@ Saved in : ../figures/runaround_smooth
 
 ### SI4 ###
 File     : SI4_decomp_terms_vs_obs.png
-Updated  : 2026-06-01 09:14
+Updated  : 2026-06-01 13:15
 Notebook : notebooks/roughness_scale-decomp.ipynb
 Saved in : ../figures/runaround_smooth
 ────────────────────────────────────────────────────────────────────────

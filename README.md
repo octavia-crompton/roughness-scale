@@ -57,11 +57,12 @@ roughness-scale/
 │   ├── figure_registry.py          ← figure registry read/write helpers
 │   └── stats.py                    ← RMSE, R², OLS, residual-correlation helpers
 ├── notebooks/
-│   ├── roughness_scale-pattern.ipynb   ← spatial pattern & storm characteristics
-│   ├── roughness_scale-decomp.ipynb    ← decomposition & prediction methods
-│   ├── roughness_scale-compute.ipynb   ← compute derived columns, write summary
-│   ├── roughness_scale-analysis.ipynb  ← original combined notebook (reference)
-│   └── archive/                        ← dated legacy notebooks
+│   ├── 1. roughness_scale-compute.ipynb        ← compute derived columns, write summary
+│   ├── 2. roughness_scale-pattern.ipynb        ← spatial pattern & storm characteristics
+│   ├── 3. roughness_scale-decomp.ipynb         ← variance decomposition & sensitivity
+│   ├── 4. roughness_scale-cf-channel_eqs.ipynb ← correction factor & composite-channel eqs
+│   ├── 5. roughness_scale-predict.ipynb        ← predicting the effect ratio
+│   └── archive/                                ← dated legacy notebooks
 ├── figures/
 │   └── runaround_smooth/
 │       ├── fig*.png                ← publication figures
@@ -80,19 +81,28 @@ roughness-scale/
 
 ## Notebooks
 
-### `roughness_scale-compute.ipynb`
+### `1. roughness_scale-compute.ipynb`
 Load raw SWOF simulation output, compute `effect_ratio` ($n_e/\langle n \rangle$)
 and related derived columns, and write `summary_slim.pkl`. Run this first.
+Produces figure 1 (conceptual sketch).
 
-### `roughness_scale-pattern.ipynb`
+### `2. roughness_scale-pattern.ipynb`
 Scatter and grid plots showing how vegetation pattern statistics ($\sigma$, $f_V$,
 anisotropy) and storm characteristics ($p$, $t_r$) drive the effective roughness
-ratio. Produces figures 1–3.
+ratio. Produces figures 2–3.
 
-### `roughness_scale-decomp.ipynb`
-Correction-factor approximations, covariance decomposition (T0/T1/T2),
-equivalent-roughness formulas, and OLS/ML predictions of $r_\mathrm{eq}$.
-Produces figures 4–6 and supplementary figures.
+### `3. roughness_scale-decomp.ipynb`
+T0/T1/T2 variance decomposition of $r_\mathrm{eq}$, hybrid predictions, and
+decomposition-term sensitivity analyses. Produces figure 4.
+
+### `4. roughness_scale-cf-channel_eqs.ipynb`
+Correction factor and composite-channel equivalent-roughness formulas (Lotter,
+Cox, Horton–Einstein, Felkel) compared against the simulation truth. Produces
+figures 5–6 and supplementary figures.
+
+### `5. roughness_scale-predict.ipynb`
+Predicting $r_\mathrm{eq}$: OLS on variance components, feature selection,
+$\langle S_f \rangle$ power-law fit, and tracer-flow visual diagnostics.
 
 ---
 
@@ -121,9 +131,11 @@ environment required. Dependencies: `numpy`, `pandas`, `matplotlib`, `seaborn`,
 `scipy`, `statsmodels`, `scikit-learn`.
 
 **Run order:**
-1. `roughness_scale-compute.ipynb` — generates `summary_slim.pkl`
-2. `roughness_scale-pattern.ipynb` — figures 1–3
-3. `roughness_scale-decomp.ipynb` — figures 4+
+1. `1. roughness_scale-compute.ipynb` — generates `summary_slim.pkl`, figure 1
+2. `2. roughness_scale-pattern.ipynb` — figures 2–3
+3. `3. roughness_scale-decomp.ipynb` — figure 4
+4. `4. roughness_scale-cf-channel_eqs.ipynb` — figures 5–6, SI
+5. `5. roughness_scale-predict.ipynb` — prediction diagnostics
 
 ---
 

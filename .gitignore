@@ -35,3 +35,8 @@ overleaf-working
 
 # Internal notes tracked locally via pre-push hook — see .git/hooks/pre-push
 INTERNAL_README.md
+
+# Local reference material (large binaries; not versioned)
+references/
+drafts/
+from_downloads/
