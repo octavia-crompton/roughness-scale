@@ -7,13 +7,19 @@ the hillslope scale.
 
 ---
 
-## Scientific background
+## Background
 
 Upscaling overland flow from patch to hillslope scales requires a roughness
 parameter that captures the aggregate effect of a spatially variable surface.
 Rather than the spatial mean $\langle n \rangle$, a model calibrated against a
 heterogeneous hillslope recovers an **equivalent roughness** $n_e$ that reflects
 how flow routes around or through rough patches.
+
+<p align="center">
+  <img src="figures/runaround_smooth/fig1_conceptual_sketch.png" alt="Conceptual sketch of the equivalent-roughness problem" width="85%">
+</p>
+
+*Figure 1 — The equivalent-roughness problem: (a) a patchy hillslope surface, (b) its uniform-roughness counterpart, and (c) the matched outlet hydrograph posing the question $n_e = ?$*
 
 The central quantity studied here is the **effective roughness ratio**
 
@@ -22,6 +28,12 @@ $$r_\mathrm{eq} = \frac{n_e}{\langle n \rangle},$$
 and how it depends on vegetation cover ($f_V$), spatial pattern (patch length
 scale $\ell$, anisotropy, connectivity), and storm characteristics (rainfall
 rate $p$, duration $t_r$).
+
+<p align="center">
+  <img src="figures/runaround_smooth/fig2_effect_ratio_fV_2x2.png" alt="Effect ratio vs vegetated fraction with hydrographs" width="85%">
+</p>
+
+*Figure 2 — Main result: $n_e/\langle n \rangle$ vs $f_V$ for the least and most intense storms (top), with corresponding hydrographs at $f_V \approx 0.5$ (bottom), coloured by patch lengthscale $L_V$. The ratio is always below unity, is minimised near $f_V = 0.5$, and increases with patch size.*
 
 Two definitions of $n_e$ are compared:
 
